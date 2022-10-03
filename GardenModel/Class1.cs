@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GardenDAL
+namespace GardenModel
 {
-    class EmployeeDao : BaseDao
+    public class Class1
     {
-        public EmployeeDao() : base()
-        {
-
-        }
     }
 }
