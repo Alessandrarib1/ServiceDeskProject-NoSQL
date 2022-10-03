@@ -89,5 +89,32 @@
   <ItemGroup>
     <None Include="Resources\download %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\istockphoto-123366044-170667a.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\istockphoto-1365654687-170667a.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nature-garden-plot-tract-wallpaper-preview.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leaf-background-vector.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\garden-team-logo-1200x630.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\495-4950519_unlock-alt-icons-download-for-free-in-png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\istockphoto-123366044-170667a1.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
