@@ -31,6 +31,7 @@ namespace Garden_Group
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBoxPassword = new System.Windows.Forms.TextBox();
             this.txtBoxUserName = new System.Windows.Forms.TextBox();
@@ -38,9 +39,8 @@ namespace Garden_Group
             this.LabelClearFields = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -53,7 +53,7 @@ namespace Garden_Group
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Location = new System.Drawing.Point(0, 285);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1027, 485);
+            this.panel3.Size = new System.Drawing.Size(509, 406);
             this.panel3.TabIndex = 9;
             // 
             // panel1
@@ -72,18 +72,29 @@ namespace Garden_Group
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Location = new System.Drawing.Point(333, 162);
+            this.panel1.Location = new System.Drawing.Point(90, 159);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(333, 368);
+            this.panel1.Size = new System.Drawing.Size(333, 374);
             this.panel1.TabIndex = 10;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Garden_Group.Properties.Resources.garden_team_logo_1200x630;
+            this.pictureBox1.Location = new System.Drawing.Point(45, 16);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(261, 65);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 31;
+            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(42, 218);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(43, 249);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 17);
             this.label2.TabIndex = 30;
@@ -93,8 +104,8 @@ namespace Garden_Group
             // 
             this.txtBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.txtBoxPassword.Location = new System.Drawing.Point(80, 168);
+            this.txtBoxPassword.ForeColor = System.Drawing.Color.Green;
+            this.txtBoxPassword.Location = new System.Drawing.Point(81, 199);
             this.txtBoxPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBoxPassword.Multiline = true;
             this.txtBoxPassword.Name = "txtBoxPassword";
@@ -106,8 +117,8 @@ namespace Garden_Group
             // 
             this.txtBoxUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBoxUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.txtBoxUserName.Location = new System.Drawing.Point(80, 85);
+            this.txtBoxUserName.ForeColor = System.Drawing.Color.Green;
+            this.txtBoxUserName.Location = new System.Drawing.Point(81, 116);
             this.txtBoxUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBoxUserName.Multiline = true;
             this.txtBoxUserName.Name = "txtBoxUserName";
@@ -119,8 +130,8 @@ namespace Garden_Group
             this.label3.AutoSize = true;
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(143, 294);
+            this.label3.ForeColor = System.Drawing.Color.Green;
+            this.label3.Location = new System.Drawing.Point(144, 325);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 20);
             this.label3.TabIndex = 26;
@@ -131,8 +142,8 @@ namespace Garden_Group
             this.LabelClearFields.AutoSize = true;
             this.LabelClearFields.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LabelClearFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelClearFields.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.LabelClearFields.Location = new System.Drawing.Point(187, 216);
+            this.LabelClearFields.ForeColor = System.Drawing.Color.Black;
+            this.LabelClearFields.Location = new System.Drawing.Point(188, 247);
             this.LabelClearFields.Name = "LabelClearFields";
             this.LabelClearFields.Size = new System.Drawing.Size(94, 17);
             this.LabelClearFields.TabIndex = 27;
@@ -140,13 +151,13 @@ namespace Garden_Group
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.BackColor = System.Drawing.Color.Green;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Bauhaus 93", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(45, 248);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(46, 279);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(241, 33);
@@ -156,38 +167,17 @@ namespace Garden_Group
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panel2.Location = new System.Drawing.Point(50, 200);
+            this.panel2.BackColor = System.Drawing.Color.Green;
+            this.panel2.Location = new System.Drawing.Point(51, 231);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(236, 1);
             this.panel2.TabIndex = 23;
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panel4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel4.Location = new System.Drawing.Point(50, 116);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(236, 1);
-            this.panel4.TabIndex = 24;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Garden_Group.Properties.Resources.My_project_1;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, 20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(333, 61);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 31;
-            this.pictureBox1.TabStop = false;
-            // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::Garden_Group.Properties.Resources.download__1_;
-            this.pictureBox3.Location = new System.Drawing.Point(50, 168);
+            this.pictureBox3.Image = global::Garden_Group.Properties.Resources._495_4950519_unlock_alt_icons_download_for_free_in_png;
+            this.pictureBox3.Location = new System.Drawing.Point(51, 199);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 25);
@@ -195,10 +185,20 @@ namespace Garden_Group
             this.pictureBox3.TabIndex = 21;
             this.pictureBox3.TabStop = false;
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Green;
+            this.panel4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.panel4.Location = new System.Drawing.Point(51, 147);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(236, 1);
+            this.panel4.TabIndex = 24;
+            // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Garden_Group.Properties.Resources.download;
-            this.pictureBox2.Location = new System.Drawing.Point(50, 85);
+            this.pictureBox2.Image = global::Garden_Group.Properties.Resources.download__4_;
+            this.pictureBox2.Location = new System.Drawing.Point(51, 116);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);
@@ -210,8 +210,9 @@ namespace Garden_Group
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.BackColor = System.Drawing.Color.Green;
+            this.BackgroundImage = global::Garden_Group.Properties.Resources.istockphoto_123366044_170667a1;
+            this.ClientSize = new System.Drawing.Size(508, 691);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
