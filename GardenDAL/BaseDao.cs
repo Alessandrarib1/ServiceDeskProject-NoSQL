@@ -9,7 +9,10 @@ namespace GardenDAL
 {
     class BaseDao
     {
-        static MongoClient client = new MongoClient("mongodb+srv://Tudor:RGgOUrcD1s7He4aH@clusterprojectnosql.cxrymcj.mongodb.net/test");
-        static IMongoDatabase db = client.GetDatabase("gardenGroup");
+        public BaseDao()
+        {
+            static MongoClient client = new MongoClient("mongodb+srv://Tudor:RGgOUrcD1s7He4aH@clusterprojectnosql.cxrymcj.mongodb.net/test");
+            static IMongoDatabase db = client.GetDatabase("gardenGroup");
+        }
     }
 }
