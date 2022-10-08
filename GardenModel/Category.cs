@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace GardenModel
 {
-    public class Class1
-    {
-    }
+    public enum Category { }
 }
