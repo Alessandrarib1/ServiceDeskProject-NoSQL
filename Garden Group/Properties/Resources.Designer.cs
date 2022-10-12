@@ -73,6 +73,16 @@ namespace Garden_Group.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap black_square_close_x_button_icon_3163191536344jbn3p5wa {
+            get {
+                object obj = ResourceManager.GetObject("black-square-close-x-button-icon-3163191536344jbn3p5wa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap download {
             get {
                 object obj = ResourceManager.GetObject("download", resourceCulture);
@@ -106,6 +116,26 @@ namespace Garden_Group.Properties {
         internal static System.Drawing.Bitmap download__4_ {
             get {
                 object obj = ResourceManager.GetObject("download (4)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap essa {
+            get {
+                object obj = ResourceManager.GetObject("essa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap essa1 {
+            get {
+                object obj = ResourceManager.GetObject("essa1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

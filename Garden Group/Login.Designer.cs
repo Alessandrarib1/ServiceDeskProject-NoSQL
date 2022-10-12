@@ -1,7 +1,6 @@
-﻿
-namespace Garden_Group
+﻿namespace Garden_Group
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +30,7 @@ namespace Garden_Group
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelDisplayError = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBoxPassword = new System.Windows.Forms.TextBox();
@@ -42,10 +42,13 @@ namespace Garden_Group
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -61,6 +64,8 @@ namespace Garden_Group
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.labelDisplayError);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtBoxPassword);
@@ -76,6 +81,17 @@ namespace Garden_Group
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(333, 374);
             this.panel1.TabIndex = 10;
+            // 
+            // labelDisplayError
+            // 
+            this.labelDisplayError.AutoSize = true;
+            this.labelDisplayError.ForeColor = System.Drawing.Color.Red;
+            this.labelDisplayError.Location = new System.Drawing.Point(66, 220);
+            this.labelDisplayError.Name = "labelDisplayError";
+            this.labelDisplayError.Size = new System.Drawing.Size(116, 17);
+            this.labelDisplayError.TabIndex = 32;
+            this.labelDisplayError.Text = "labelDisplayError";
+            this.labelDisplayError.Visible = false;
             // 
             // pictureBox1
             // 
@@ -105,7 +121,7 @@ namespace Garden_Group
             this.txtBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxPassword.ForeColor = System.Drawing.Color.Green;
-            this.txtBoxPassword.Location = new System.Drawing.Point(81, 199);
+            this.txtBoxPassword.Location = new System.Drawing.Point(81, 185);
             this.txtBoxPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBoxPassword.Multiline = true;
             this.txtBoxPassword.Name = "txtBoxPassword";
@@ -136,6 +152,7 @@ namespace Garden_Group
             this.label3.Size = new System.Drawing.Size(41, 20);
             this.label3.TabIndex = 26;
             this.label3.Text = "Exit";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // LabelClearFields
             // 
@@ -164,11 +181,12 @@ namespace Garden_Group
             this.button1.TabIndex = 25;
             this.button1.Text = "LOG IN";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Green;
-            this.panel2.Location = new System.Drawing.Point(51, 231);
+            this.panel2.Location = new System.Drawing.Point(51, 217);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(236, 1);
@@ -177,7 +195,7 @@ namespace Garden_Group
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Garden_Group.Properties.Resources._495_4950519_unlock_alt_icons_download_for_free_in_png;
-            this.pictureBox3.Location = new System.Drawing.Point(51, 199);
+            this.pictureBox3.Location = new System.Drawing.Point(51, 185);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 25);
@@ -206,18 +224,42 @@ namespace Garden_Group
             this.pictureBox2.TabIndex = 22;
             this.pictureBox2.TabStop = false;
             // 
-            // Form1
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.White;
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox4.Image = global::Garden_Group.Properties.Resources.essa;
+            this.pictureBox4.Location = new System.Drawing.Point(474, 12);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Padding = new System.Windows.Forms.Padding(1);
+            this.pictureBox4.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 11;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(138, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "label1";
+            // 
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImage = global::Garden_Group.Properties.Resources.istockphoto_123366044_170667a1;
-            this.ClientSize = new System.Drawing.Size(508, 691);
+            this.ClientSize = new System.Drawing.Size(510, 659);
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
+            this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
@@ -225,6 +267,7 @@ namespace Garden_Group
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -244,6 +287,9 @@ namespace Garden_Group
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label labelDisplayError;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label1;
     }
 }
 
