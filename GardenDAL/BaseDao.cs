@@ -23,9 +23,5 @@ namespace GardenDAL
             db = client.GetDatabase("gardenGroup");
 
         }
-   
-
-
-
     }
 }
