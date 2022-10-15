@@ -15,7 +15,10 @@ namespace GardenModel
         private string name { get; set; }
 
         [BsonId]
-        private ObjectId employeeNumber { get; set; }
+        private ObjectId objectId { get; set; }
+
+        [BsonElement("employeeId")]
+        private int employeeId { get; set; }
 
         [BsonElement("username")]
         private string username { get; set; }
@@ -26,16 +29,21 @@ namespace GardenModel
 
         private Job job;
 
-        public User(string username, string password, ObjectId employeeNumber, Job job)
+        public User(string username, string password, ObjectId objectId, int employeeId, Job job)
         {
             this.username = username;
             this.password = password;
-            this.employeeNumber = employeeNumber;
+            this.employeeId = employeeId;
+            this.objectId = objectId;
             this.job = GetJob();
         }
-        public ObjectId GetEmployeeNumber()
+        public int GetEmployeeId()
         {
-            return employeeNumber;
+            return employeeId;
+        }
+        public ObjectId GetObjectId()
+        {
+            return objectId;
         }
         public string GetUsername()
         {
