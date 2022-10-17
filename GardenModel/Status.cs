@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace GardenModel
 {
-    public enum Status { Open, Closed, Finished}
+    public enum Status { Open, Closed, Unresolved}
 }

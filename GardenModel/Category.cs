@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace GardenModel
 {
-    public enum Category { }
+    public enum Category {Login, Hardware, Software, Security }
 }
