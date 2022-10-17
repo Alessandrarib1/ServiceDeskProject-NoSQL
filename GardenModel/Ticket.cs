@@ -24,15 +24,20 @@ namespace GardenModel
         private string statusName { get; set; }
         public Status ticketStatus { get; set; }
 
-        [BsonElement ("description")]
-        public string description { get; set; }
+        [BsonElement ("priority")]
+        private string priorityName { get; set; }
+        private Priority priority { get; set; }
 
-        public Ticket(ObjectId objectId, int employeeId, Category category, Status status, string description)
+        [BsonElement ("description")]
+        private string description { get; set; }
+
+        public Ticket(ObjectId objectId, int employeeId, Category category, Status status, Priority priority, string description)
         {
             this.objectId = objectId;
             this.employeeId = employeeId;
             this.category = GetCategory();
             this.ticketStatus = GetStatus();
+            this.priority = GetPriority();
             this.description = description;
         }
 
@@ -63,6 +68,18 @@ namespace GardenModel
                 return Status.Closed;
             else
                 return Status.Unresolved;
+        }
+
+        public Priority GetPriority()
+        {
+            if (priorityName == "low")
+                return Priority.Low;
+            else if (priorityName == "medium")
+                return Priority.Medium;
+            else if (priorityName == "high")
+                return Priority.High;
+            else
+                return Priority.Critical;
         }
         public string GetDescription()
         {
