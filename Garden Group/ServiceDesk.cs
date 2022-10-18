@@ -14,13 +14,12 @@ namespace Garden_Group
 {
     public partial class ServiceDesk : Form
     {
-        public ServiceDeskService serviceDeskService = new ServiceDeskService();
+        public TicketService ticketService = new TicketService();
         List<Ticket> tickets;
 
         public ServiceDesk()
         {
             InitializeComponent();
-            tickets = serviceDeskService.GetTickets();
 
             ShowPanel(pnlIncidentManagement);
         }
@@ -30,6 +29,8 @@ namespace Garden_Group
             
         }
 
+
+        //general method for ease of panel switching
         private void ShowPanel(Panel panel) //i tried making a function that would fit all three, but since each panel displays different things i couldnt do it as general as i wanted
 
         {
@@ -49,7 +50,7 @@ namespace Garden_Group
                 pnlIncidentManagement.Show();
                 pnlIncidentManagement.Dock = DockStyle.Fill;
 
-                DisplayTickets();
+                DisplayAllTickets();
             }
             else if (panel == pnlUserManagement)
             {
@@ -71,6 +72,10 @@ namespace Garden_Group
             */
         }
 
+
+        //TICKET INCIDENT PANEL
+
+        //filling in the listview with the ticket list
         private void DisplayTickets()
         {
             try
@@ -79,7 +84,7 @@ namespace Garden_Group
                 listViewTickets.View = View.Details;
                 listViewTickets.FullRowSelect = true;
 
-                listViewTickets.Columns.Add("Object Id", 0);
+                listViewTickets.Columns.Add("Object Id", 50);
                 listViewTickets.Columns.Add("Employee Id", 100);
                 listViewTickets.Columns.Add("Category", 70);
                 listViewTickets.Columns.Add("Priority", 90);
@@ -87,16 +92,36 @@ namespace Garden_Group
 
                 foreach (Ticket t in tickets)
                 {
-                    ListViewItem ti = new ListViewItem(t.GetObjectId().ToString());
-                    ti.SubItems.Add(t.GetEmployeeId().ToString());
-                    ti.SubItems.Add(t.GetCategory().ToString());
-                    ti.SubItems.Add(t.GetPriority().ToString());
-                    ti.SubItems.Add(t.GetDescription().ToString());
+                    ListViewItem ti = new ListViewItem(t.objectId.ToString());
+                    ti.SubItems.Add(t.employeeId.ToString());
+                    ti.SubItems.Add(t.ticketCategory.ToString());
+                    ti.SubItems.Add(t.ticketPriority.ToString());
+                    ti.SubItems.Add(t.description.ToString());
 
                     listViewTickets.Items.Add(ti);
                 }
             }
             catch (Exception e) { Console.WriteLine(e.Message); }
         }
+
+
+        //different ticket displays
+        private void DisplayAllTickets()
+        {
+            tickets = ticketService.GetTickets();
+            DisplayTickets();
+        }
+
+
+        //Button presses for different ticket displays
+        private void toolStripAllTickets_Click(object sender, EventArgs e)
+        {
+            DisplayAllTickets();
+        }
+
+        
+        //USER MANAGEMENT PANEL
+
+
     }
 }

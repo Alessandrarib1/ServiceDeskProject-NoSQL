@@ -46,6 +46,7 @@ namespace Garden_Group
             this.toolStripOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripClosed = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripUnresolved = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripAllTickets = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pnlIncidentManagement.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -151,7 +152,8 @@ namespace Garden_Group
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripOpen,
             this.toolStripClosed,
-            this.toolStripUnresolved});
+            this.toolStripUnresolved,
+            this.toolStripAllTickets});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(775, 28);
@@ -175,6 +177,13 @@ namespace Garden_Group
             this.toolStripUnresolved.Name = "toolStripUnresolved";
             this.toolStripUnresolved.Size = new System.Drawing.Size(97, 24);
             this.toolStripUnresolved.Text = "Unresolved";
+            // 
+            // toolStripAllTickets
+            // 
+            this.toolStripAllTickets.Name = "toolStripAllTickets";
+            this.toolStripAllTickets.Size = new System.Drawing.Size(41, 24);
+            this.toolStripAllTickets.Text = "All";
+            this.toolStripAllTickets.Click += new System.EventHandler(this.toolStripAllTickets_Click);
             // 
             // ServiceDesk
             // 
@@ -218,5 +227,6 @@ namespace Garden_Group
         private System.Windows.Forms.ToolStripMenuItem toolStripOpen;
         private System.Windows.Forms.ToolStripMenuItem toolStripClosed;
         private System.Windows.Forms.ToolStripMenuItem toolStripUnresolved;
+        private System.Windows.Forms.ToolStripMenuItem toolStripAllTickets;
     }
 }

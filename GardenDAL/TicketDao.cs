@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GardenModel;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace GardenDAL
 {
-    public class ServiceDeskDao : BaseDao
+    public class TicketDao : BaseDao
     {
         public IMongoCollection<Ticket> collectionOfTickets;
 
-        public ServiceDeskDao()
+        public TicketDao()
         {
             collectionOfTickets = db.GetCollection<Ticket>("Tickets");
         }
@@ -22,5 +23,10 @@ namespace GardenDAL
             List<Ticket> tickets = collectionOfTickets.AsQueryable().ToList<Ticket>();
             return tickets;
         }
+        
+        //public List<Ticket> GetTicketsWithStatus(Status status)
+        //{
+           // List<Ticket> tickets = collectionOfTickets.Find(x => x.)
+        //}
     }
 }

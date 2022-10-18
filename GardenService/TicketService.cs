@@ -8,9 +8,9 @@ using GardenModel;
 
 namespace GardenService
 {
-    public class ServiceDeskService
+    public class TicketService
     {
-        public ServiceDeskDao serviceDeskDao = new ServiceDeskDao();
+        public TicketDao serviceDeskDao = new TicketDao();
 
         public List<Ticket> GetTickets()
         {
