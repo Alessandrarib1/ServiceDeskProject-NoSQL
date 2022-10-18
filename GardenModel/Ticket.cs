@@ -34,41 +34,40 @@ namespace GardenModel
 
         public void SetCategory()
         {
-            if (categoryName == "login")
+            if (categoryName == "Login")
                 ticketCategory = Category.Login;
-            else if (categoryName == "hardware")
+            else if (categoryName == "Hardware")
                 ticketCategory = Category.Hardware;
-            else if (categoryName == "software")
+            else if (categoryName == "Software")
                 ticketCategory = Category.Software;
-            else if (categoryName == "security")
+            else if (categoryName == "Security")
                 ticketCategory = Category.Security;
         }
 
         public void SetStatus()
         {
-            if (statusName == "open")
+            if (statusName == "Open")
                 ticketStatus = Status.Open;
-            else if (statusName == "closed")
+            else if (statusName == "Closed")
                 ticketStatus = Status.Closed;
-            else if (statusName == "unresolved")
+            else if (statusName == "Unresolved")
                 ticketStatus = Status.Unresolved;
         }
 
         public void SetPriority()
         {
-            if (priorityName == "low")
+            if (priorityName == "Low")
                 ticketPriority = Priority.Low;
-            else if (priorityName == "medium")
+            else if (priorityName == "Medium")
                 ticketPriority = Priority.Medium;
-            else if (priorityName == "high")
+            else if (priorityName == "High")
                 ticketPriority = Priority.High;
-            else if (priorityName == "critical")
+            else if (priorityName == "Critical")
                 ticketPriority = Priority.Critical;
         }
 
-        public Ticket (ObjectId objectId, int employeeId, string categoryName, string statusName, string priorityName, string description)
+        public Ticket (int employeeId, string categoryName, string statusName, string priorityName, string description)
         {
-            this.objectId = objectId;
             this.employeeId = employeeId;
             this.categoryName = categoryName;
             this.statusName = statusName;

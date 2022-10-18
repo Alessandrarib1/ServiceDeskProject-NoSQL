@@ -16,7 +16,7 @@ namespace Garden_Group
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ServiceDesk());
+            Application.Run(new ServiceDesk(1));
         }
     }
 }

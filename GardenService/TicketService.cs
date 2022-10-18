@@ -10,11 +10,22 @@ namespace GardenService
 {
     public class TicketService
     {
-        public TicketDao serviceDeskDao = new TicketDao();
+        public TicketDao ticketDao = new TicketDao();
 
-        public List<Ticket> GetTickets()
+        public List<Ticket> GetAllTickets()
         {
-            return serviceDeskDao.GetTickets();
+            return ticketDao.GetAllTickets();
+        }
+
+        public List<Ticket> GetTicketsWithStatus(Status status)
+        {
+            return ticketDao.GetTicketsWithStatus(status);
+        }
+
+        public void CreateTicket(Ticket ticket)
+        {
+            ticketDao.CreateTicket(ticket);
+            return;
         }
     }
 }

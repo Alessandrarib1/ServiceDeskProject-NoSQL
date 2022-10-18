@@ -16,19 +16,16 @@ namespace Garden_Group
     {
         public TicketService ticketService = new TicketService();
         List<Ticket> tickets;
+        int userId;
 
-        public ServiceDesk()
+
+        public ServiceDesk(int employeeId)
         {
             InitializeComponent();
+            userId = employeeId;
 
             ShowPanel(pnlIncidentManagement);
         }
-
-        private void ServiceDesk_Load()
-        {
-            
-        }
-
 
         //general method for ease of panel switching
         private void ShowPanel(Panel panel) //i tried making a function that would fit all three, but since each panel displays different things i couldnt do it as general as i wanted
@@ -38,6 +35,7 @@ namespace Garden_Group
             {
                 pnlIncidentManagement.Hide();
                 pnlUserManagement.Hide();
+                pnlTicketCreation.Hide();
 
                 pnlDashboard.Show();
                 pnlDashboard.Dock = DockStyle.Fill;
@@ -46,6 +44,7 @@ namespace Garden_Group
             {
                 pnlDashboard.Hide();
                 pnlUserManagement.Hide();
+                pnlTicketCreation.Hide();
 
                 pnlIncidentManagement.Show();
                 pnlIncidentManagement.Dock = DockStyle.Fill;
@@ -56,9 +55,19 @@ namespace Garden_Group
             {
                 pnlDashboard.Hide();
                 pnlIncidentManagement.Hide();
+                pnlTicketCreation.Hide();
 
                 pnlUserManagement.Show();
                 pnlUserManagement.Dock = DockStyle.Fill;
+            }
+            else if (panel == pnlTicketCreation)
+            {
+                pnlDashboard.Hide();
+                pnlIncidentManagement.Hide();
+                pnlUserManagement.Hide();
+
+                pnlTicketCreation.Show();
+                pnlTicketCreation.Dock = DockStyle.Fill;
             }
 
             /* i had a lovely little code of
@@ -75,6 +84,11 @@ namespace Garden_Group
 
         //TICKET INCIDENT PANEL
 
+        private void toolStripIncidentManagement_Click(object sender, EventArgs e)
+        {
+            ShowPanel(pnlIncidentManagement);
+        }
+
         //filling in the listview with the ticket list
         private void DisplayTickets()
         {
@@ -88,7 +102,7 @@ namespace Garden_Group
                 listViewTickets.Columns.Add("Employee Id", 100);
                 listViewTickets.Columns.Add("Category", 70);
                 listViewTickets.Columns.Add("Priority", 90);
-                listViewTickets.Columns.Add("Description", 300);
+                listViewTickets.Columns.Add("Description", 250);
 
                 foreach (Ticket t in tickets)
                 {
@@ -108,7 +122,13 @@ namespace Garden_Group
         //different ticket displays
         private void DisplayAllTickets()
         {
-            tickets = ticketService.GetTickets();
+            tickets = ticketService.GetAllTickets();
+            DisplayTickets();
+        }
+
+        private void DisplayTicketsWithStatus(Status status)
+        {
+            tickets = ticketService.GetTicketsWithStatus(status);
             DisplayTickets();
         }
 
@@ -119,9 +139,39 @@ namespace Garden_Group
             DisplayAllTickets();
         }
 
-        
+        private void toolStripOpen_Click(object sender, EventArgs e)
+        {
+            DisplayTicketsWithStatus(Status.Open);
+        }
+
+
+
+
+
+
         //USER MANAGEMENT PANEL
 
 
+        //TICKET CREATION PANEL
+
+        private void toolStripTicketCreation_Click(object sender, EventArgs e)
+        {
+            ShowPanel(pnlTicketCreation);
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            Ticket ticket = new Ticket(userId, comboBoxCategory.Text, comboBoxStatus.Text, comboBoxPriority.Text, txtDescription.Text);
+            ticketService.CreateTicket(ticket);
+            EmptyFields();
+        }
+
+        public void EmptyFields()
+        {
+            comboBoxCategory.Text = String.Empty;
+            comboBoxStatus.Text = String.Empty;
+            comboBoxPriority.Text = String.Empty;
+            txtDescription.Text = String.Empty;
+        }
     }
 }
