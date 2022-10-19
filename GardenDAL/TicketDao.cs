@@ -28,12 +28,21 @@ namespace GardenDAL
         {
             List<Ticket> tickets = collectionOfTickets.Find(x => x.ticketStatus == status).ToList<Ticket>();
             return tickets;
-        }
+        } 
 
+        public Ticket GetTicket(ObjectId objectId)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", objectId);
+            var documents = collectionOfTickets.Find(filter);
+        }
         public void CreateTicket(Ticket ticket)
         {
             collectionOfTickets.InsertOne(ticket);
-            return;
+        }
+
+        public void DeleteTicket(ObjectId tempobjectId)
+        {
+            collectionOfTickets.DeleteOne(s => s.objectId == tempobjectId);
         }
     }
 }

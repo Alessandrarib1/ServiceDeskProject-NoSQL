@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GardenModel;
 using GardenService;
+using MongoDB.Bson;
 
 namespace Garden_Group
 {
@@ -17,7 +18,8 @@ namespace Garden_Group
         public TicketService ticketService = new TicketService();
         List<Ticket> tickets;
         int userId;
-
+        ObjectId tempObjId;
+        Ticket tempTicket;
 
         public ServiceDesk(int employeeId)
         {
@@ -144,9 +146,27 @@ namespace Garden_Group
             DisplayTicketsWithStatus(Status.Open);
         }
 
+        /*private void listViewTickets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listViewTickets.SelectedItems.Count == 0)
+                    return;
 
+                tempObjId = ObjectId.Parse(listViewTickets.SelectedItems[0].Text);
 
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        } */
 
+        private void listViewTickets_DoubleClick(object sender, EventArgs e)
+        {
+            if (listViewTickets.SelectedItems.Count == 1)
+            {
+                tempObjId = ObjectId.Parse(listViewTickets.SelectedItems[0].Text);
+                ShowPanel(pnlTicketCreation);
+            }
+        }
 
 
         //USER MANAGEMENT PANEL
@@ -163,6 +183,14 @@ namespace Garden_Group
         {
             Ticket ticket = new Ticket(userId, comboBoxCategory.Text, comboBoxStatus.Text, comboBoxPriority.Text, txtDescription.Text);
             ticketService.CreateTicket(ticket);
+            MessageBox.Show("Ticket has been created!");
+            EmptyFields();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            ticketService.DeleteTicket(tempObjId);
+            MessageBox.Show("Ticket has been deleted!");
             EmptyFields();
         }
 
@@ -173,5 +201,12 @@ namespace Garden_Group
             comboBoxPriority.Text = String.Empty;
             txtDescription.Text = String.Empty;
         }
+
+        public void AutoFillFields(ObjectId tempObjId)
+        {
+
+        }
+
+       
     }
 }

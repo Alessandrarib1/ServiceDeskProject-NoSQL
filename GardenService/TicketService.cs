@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GardenDAL;
 using GardenModel;
+using MongoDB.Bson;
 
 namespace GardenService
 {
@@ -25,7 +26,11 @@ namespace GardenService
         public void CreateTicket(Ticket ticket)
         {
             ticketDao.CreateTicket(ticket);
-            return;
+        }
+
+        public void DeleteTicket(ObjectId tempObjId)
+        {
+            ticketDao.DeleteTicket(tempObjId);
         }
     }
 }

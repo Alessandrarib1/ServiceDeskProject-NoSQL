@@ -76,33 +76,33 @@ namespace Garden_Group
             this.toolStripTicketCreation});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // toolStripDashboard
             // 
             this.toolStripDashboard.Name = "toolStripDashboard";
-            this.toolStripDashboard.Size = new System.Drawing.Size(96, 26);
+            this.toolStripDashboard.Size = new System.Drawing.Size(96, 24);
             this.toolStripDashboard.Text = "Dashboard";
             // 
             // toolStripIncidentManagement
             // 
             this.toolStripIncidentManagement.Name = "toolStripIncidentManagement";
-            this.toolStripIncidentManagement.Size = new System.Drawing.Size(168, 26);
+            this.toolStripIncidentManagement.Size = new System.Drawing.Size(168, 24);
             this.toolStripIncidentManagement.Text = "Incident Management";
             this.toolStripIncidentManagement.Click += new System.EventHandler(this.toolStripIncidentManagement_Click);
             // 
             // toolStripUserManagement
             // 
             this.toolStripUserManagement.Name = "toolStripUserManagement";
-            this.toolStripUserManagement.Size = new System.Drawing.Size(144, 26);
+            this.toolStripUserManagement.Size = new System.Drawing.Size(144, 24);
             this.toolStripUserManagement.Text = "User Management";
             // 
             // toolStripTicketCreation
             // 
             this.toolStripTicketCreation.Name = "toolStripTicketCreation";
-            this.toolStripTicketCreation.Size = new System.Drawing.Size(118, 26);
+            this.toolStripTicketCreation.Size = new System.Drawing.Size(118, 24);
             this.toolStripTicketCreation.Text = "Create a ticket";
             this.toolStripTicketCreation.Click += new System.EventHandler(this.toolStripTicketCreation_Click);
             // 
@@ -124,9 +124,9 @@ namespace Garden_Group
             // 
             this.pnlIncidentManagement.Controls.Add(this.listViewTickets);
             this.pnlIncidentManagement.Controls.Add(this.menuStrip2);
-            this.pnlIncidentManagement.Location = new System.Drawing.Point(793, 247);
+            this.pnlIncidentManagement.Location = new System.Drawing.Point(12, 31);
             this.pnlIncidentManagement.Name = "pnlIncidentManagement";
-            this.pnlIncidentManagement.Size = new System.Drawing.Size(133, 102);
+            this.pnlIncidentManagement.Size = new System.Drawing.Size(776, 407);
             this.pnlIncidentManagement.TabIndex = 2;
             // 
             // listViewTickets
@@ -144,6 +144,8 @@ namespace Garden_Group
             this.listViewTickets.TabIndex = 0;
             this.listViewTickets.UseCompatibleStateImageBehavior = false;
             this.listViewTickets.View = System.Windows.Forms.View.Details;
+            //this.listViewTickets.SelectedIndexChanged += new System.EventHandler(this.listViewTickets_SelectedIndexChanged);
+            this.listViewTickets.DoubleClick += new System.EventHandler(this.listViewTickets_DoubleClick);
             // 
             // objectId
             // 
@@ -179,33 +181,33 @@ namespace Garden_Group
             this.toolStripAllTickets});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(133, 30);
+            this.menuStrip2.Size = new System.Drawing.Size(776, 28);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
             // toolStripOpen
             // 
             this.toolStripOpen.Name = "toolStripOpen";
-            this.toolStripOpen.Size = new System.Drawing.Size(59, 26);
+            this.toolStripOpen.Size = new System.Drawing.Size(59, 24);
             this.toolStripOpen.Text = "Open";
             this.toolStripOpen.Click += new System.EventHandler(this.toolStripOpen_Click);
             // 
             // toolStripClosed
             // 
             this.toolStripClosed.Name = "toolStripClosed";
-            this.toolStripClosed.Size = new System.Drawing.Size(68, 26);
+            this.toolStripClosed.Size = new System.Drawing.Size(68, 24);
             this.toolStripClosed.Text = "Closed";
             // 
             // toolStripUnresolved
             // 
             this.toolStripUnresolved.Name = "toolStripUnresolved";
-            this.toolStripUnresolved.Size = new System.Drawing.Size(97, 26);
+            this.toolStripUnresolved.Size = new System.Drawing.Size(97, 24);
             this.toolStripUnresolved.Text = "Unresolved";
             // 
             // toolStripAllTickets
             // 
             this.toolStripAllTickets.Name = "toolStripAllTickets";
-            this.toolStripAllTickets.Size = new System.Drawing.Size(41, 26);
+            this.toolStripAllTickets.Size = new System.Drawing.Size(41, 24);
             this.toolStripAllTickets.Text = "All";
             this.toolStripAllTickets.Click += new System.EventHandler(this.toolStripAllTickets_Click);
             // 
@@ -222,9 +224,9 @@ namespace Garden_Group
             this.pnlTicketCreation.Controls.Add(this.label3);
             this.pnlTicketCreation.Controls.Add(this.label2);
             this.pnlTicketCreation.Controls.Add(this.label1);
-            this.pnlTicketCreation.Location = new System.Drawing.Point(12, 31);
+            this.pnlTicketCreation.Location = new System.Drawing.Point(793, 212);
             this.pnlTicketCreation.Name = "pnlTicketCreation";
-            this.pnlTicketCreation.Size = new System.Drawing.Size(775, 407);
+            this.pnlTicketCreation.Size = new System.Drawing.Size(216, 117);
             this.pnlTicketCreation.TabIndex = 3;
             // 
             // btnDelete
@@ -235,6 +237,7 @@ namespace Garden_Group
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
