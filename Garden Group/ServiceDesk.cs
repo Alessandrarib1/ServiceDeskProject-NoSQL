@@ -17,9 +17,8 @@ namespace Garden_Group
     {
         public TicketService ticketService = new TicketService();
         List<Ticket> tickets;
-        int userId;
-        ObjectId tempObjId;
         Ticket tempTicket;
+        int userId;
 
         public ServiceDesk(int employeeId)
         {
@@ -146,6 +145,15 @@ namespace Garden_Group
             DisplayTicketsWithStatus(Status.Open);
         }
 
+        private void toolStripClosed_Click(object sender, EventArgs e)
+        {
+            DisplayTicketsWithStatus(Status.Closed);
+        }
+        private void toolStripUnresolved_Click(object sender, EventArgs e)
+        {
+            DisplayTicketsWithStatus(Status.Unresolved);
+        }
+
         /*private void listViewTickets_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -163,7 +171,9 @@ namespace Garden_Group
         {
             if (listViewTickets.SelectedItems.Count == 1)
             {
-                tempObjId = ObjectId.Parse(listViewTickets.SelectedItems[0].Text);
+                ObjectId tempObjId = ObjectId.Parse(listViewTickets.SelectedItems[0].Text);
+                tempTicket = ticketService.GetTicket(tempObjId);
+                AutoFillFields(tempTicket);
                 ShowPanel(pnlTicketCreation);
             }
         }
@@ -181,17 +191,43 @@ namespace Garden_Group
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            Ticket ticket = new Ticket(userId, comboBoxCategory.Text, comboBoxStatus.Text, comboBoxPriority.Text, txtDescription.Text);
-            ticketService.CreateTicket(ticket);
-            MessageBox.Show("Ticket has been created!");
-            EmptyFields();
+            if (CheckFields())
+            {
+                Ticket ticket = new Ticket(userId, (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
+                ticketService.CreateTicket(ticket);
+                MessageBox.Show("Ticket has been created!");
+                EmptyFields();
+            }
+            else
+                MessageBox.Show("Please fill in all fields");
+            
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (tempTicket != null && CheckFields())
+            {
+                Ticket ticket = new Ticket(userId, (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
+                ticketService.UpdateTicket(tempTicket.objectId, ticket);
+                MessageBox.Show("Ticket has been updated!");
+                EmptyFields();
+            }
+            else
+                MessageBox.Show("No ticket to update!");
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            ticketService.DeleteTicket(tempObjId);
-            MessageBox.Show("Ticket has been deleted!");
-            EmptyFields();
+            if (tempTicket != null)
+            {
+                ticketService.DeleteTicket(tempTicket.objectId);
+                MessageBox.Show("Ticket has been deleted!");
+                EmptyFields();
+            }
+            else
+                MessageBox.Show("No ticket to delete");
+           
         }
 
         public void EmptyFields()
@@ -202,11 +238,22 @@ namespace Garden_Group
             txtDescription.Text = String.Empty;
         }
 
-        public void AutoFillFields(ObjectId tempObjId)
+        public bool CheckFields()
         {
-
+            //if (comboBoxCategory.Text.Length != 0 && comboBoxStatus.Text.Length != 0 && comboBoxPriority.Text.Length != 0 && txtDescription.Text.Length != 0)
+            if (comboBoxCategory.Text != String.Empty && comboBoxStatus.Text != String.Empty && comboBoxPriority.Text != String.Empty && txtDescription.Text != String.Empty)
+                return true;
+            return false;
         }
 
-       
+        public void AutoFillFields(Ticket ticket)
+        {
+                comboBoxCategory.Text = ticket.ticketCategory.ToString();
+                comboBoxStatus.Text = ticket.ticketStatus.ToString();
+                comboBoxPriority.Text = ticket.ticketPriority.ToString();
+                txtDescription.Text = ticket.description;
+        }
+
+        
     }
 }

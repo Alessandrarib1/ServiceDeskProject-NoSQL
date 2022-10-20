@@ -18,6 +18,10 @@ namespace GardenService
             return ticketDao.GetAllTickets();
         }
 
+        public Ticket GetTicket(ObjectId objectId)
+        {
+            return ticketDao.GetTicket(objectId);
+        }
         public List<Ticket> GetTicketsWithStatus(Status status)
         {
             return ticketDao.GetTicketsWithStatus(status);
@@ -26,6 +30,11 @@ namespace GardenService
         public void CreateTicket(Ticket ticket)
         {
             ticketDao.CreateTicket(ticket);
+        }
+
+        public void UpdateTicket(ObjectId objectId, Ticket ticket)
+        {
+            ticketDao.UpdateTicket(objectId, ticket);
         }
 
         public void DeleteTicket(ObjectId tempObjId)

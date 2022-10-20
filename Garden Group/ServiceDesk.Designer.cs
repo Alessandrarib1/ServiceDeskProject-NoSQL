@@ -124,9 +124,9 @@ namespace Garden_Group
             // 
             this.pnlIncidentManagement.Controls.Add(this.listViewTickets);
             this.pnlIncidentManagement.Controls.Add(this.menuStrip2);
-            this.pnlIncidentManagement.Location = new System.Drawing.Point(12, 31);
+            this.pnlIncidentManagement.Location = new System.Drawing.Point(793, 242);
             this.pnlIncidentManagement.Name = "pnlIncidentManagement";
-            this.pnlIncidentManagement.Size = new System.Drawing.Size(776, 407);
+            this.pnlIncidentManagement.Size = new System.Drawing.Size(102, 76);
             this.pnlIncidentManagement.TabIndex = 2;
             // 
             // listViewTickets
@@ -144,7 +144,6 @@ namespace Garden_Group
             this.listViewTickets.TabIndex = 0;
             this.listViewTickets.UseCompatibleStateImageBehavior = false;
             this.listViewTickets.View = System.Windows.Forms.View.Details;
-            //this.listViewTickets.SelectedIndexChanged += new System.EventHandler(this.listViewTickets_SelectedIndexChanged);
             this.listViewTickets.DoubleClick += new System.EventHandler(this.listViewTickets_DoubleClick);
             // 
             // objectId
@@ -181,7 +180,7 @@ namespace Garden_Group
             this.toolStripAllTickets});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(776, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(102, 28);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -197,12 +196,14 @@ namespace Garden_Group
             this.toolStripClosed.Name = "toolStripClosed";
             this.toolStripClosed.Size = new System.Drawing.Size(68, 24);
             this.toolStripClosed.Text = "Closed";
+            this.toolStripClosed.Click += new System.EventHandler(this.toolStripClosed_Click);
             // 
             // toolStripUnresolved
             // 
             this.toolStripUnresolved.Name = "toolStripUnresolved";
             this.toolStripUnresolved.Size = new System.Drawing.Size(97, 24);
             this.toolStripUnresolved.Text = "Unresolved";
+            this.toolStripUnresolved.Click += new System.EventHandler(this.toolStripUnresolved_Click);
             // 
             // toolStripAllTickets
             // 
@@ -224,9 +225,9 @@ namespace Garden_Group
             this.pnlTicketCreation.Controls.Add(this.label3);
             this.pnlTicketCreation.Controls.Add(this.label2);
             this.pnlTicketCreation.Controls.Add(this.label1);
-            this.pnlTicketCreation.Location = new System.Drawing.Point(793, 212);
+            this.pnlTicketCreation.Location = new System.Drawing.Point(12, 31);
             this.pnlTicketCreation.Name = "pnlTicketCreation";
-            this.pnlTicketCreation.Size = new System.Drawing.Size(216, 117);
+            this.pnlTicketCreation.Size = new System.Drawing.Size(778, 407);
             this.pnlTicketCreation.TabIndex = 3;
             // 
             // btnDelete
@@ -247,6 +248,7 @@ namespace Garden_Group
             this.btnUpdate.TabIndex = 9;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnCreate
             // 
@@ -284,7 +286,7 @@ namespace Garden_Group
             this.comboBoxStatus.FormattingEnabled = true;
             this.comboBoxStatus.Items.AddRange(new object[] {
             "Open",
-            "Close",
+            "Closed",
             "Unresolved"});
             this.comboBoxStatus.Location = new System.Drawing.Point(170, 86);
             this.comboBoxStatus.Name = "comboBoxStatus";

@@ -28,21 +28,35 @@ namespace GardenDAL
         {
             List<Ticket> tickets = collectionOfTickets.Find(x => x.ticketStatus == status).ToList<Ticket>();
             return tickets;
-        } 
+        }
 
         public Ticket GetTicket(ObjectId objectId)
         {
+            Ticket ticket = collectionOfTickets.Find(x => x.objectId == objectId).FirstOrDefault();
+
+            return ticket;
+        }
+
+        /*public Ticket GetTicket(ObjectId objectId)
+        {
             var filter = Builders<BsonDocument>.Filter.Eq("_id", objectId);
             var documents = collectionOfTickets.Find(filter);
-        }
+        }*/
+
         public void CreateTicket(Ticket ticket)
         {
             collectionOfTickets.InsertOne(ticket);
         }
 
-        public void DeleteTicket(ObjectId tempobjectId)
+        public void DeleteTicket(ObjectId tempObjectId)
         {
-            collectionOfTickets.DeleteOne(s => s.objectId == tempobjectId);
+            collectionOfTickets.DeleteOne(s => s.objectId == tempObjectId);
+        }
+
+        public void UpdateTicket(ObjectId ObjectId, Ticket Ticket)
+        {
+            var updateDef = Builders<Ticket>.Update.Set("employeeId", Ticket.employeeId).Set("category", Ticket.ticketCategory).Set("status", Ticket.ticketStatus).Set("priority", Ticket.ticketPriority).Set("description", Ticket.description);
+            collectionOfTickets.UpdateOne(s => s.objectId == ObjectId, updateDef);
         }
     }
 }
