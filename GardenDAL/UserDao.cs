@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GardenModel;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace GardenDAL
@@ -20,6 +21,11 @@ namespace GardenDAL
         {
             List<User> users = collectionOfUsers.AsQueryable().ToList<User>();
             return users;
+        }
+        public User GetUserByObjectId(ObjectId objectId)
+        {
+            User user = collectionOfUsers.Find(x => x.GetObjectId() == objectId).FirstOrDefault();
+            return user;
         }
 
         public User VerifyLogin(String username, String password)
