@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GardenService
+namespace GardenModel
 {
-    public class Class1
-    {
-    }
+    public enum Priority { Low, Medium, High, Critical}
 }
