@@ -1,5 +1,6 @@
 ﻿using GardenDAL;
 using GardenModel;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,10 @@ namespace GardenService
         public User ValidateLogin(String username, String password)
         {
             return userDao.VerifyLogin(username, password);
+        }
+        public User GetUserById(ObjectId objectId)
+        {
+            return userDao.GetUserByObjectId(objectId);
         }
 
     }

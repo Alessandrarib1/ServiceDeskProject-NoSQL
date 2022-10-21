@@ -21,7 +21,7 @@ namespace Garden_Group
         private string username;
         private string password;
         public UserService userService = new UserService();
-
+        public ServiceDesk serviceDesk;
         public Login()
         {
             InitializeComponent();
@@ -36,13 +36,15 @@ namespace Garden_Group
             {
                 password = txtBoxPassword.Text;
                 username = txtBoxUserName.Text;
-                try { user = userService.ValidateLogin(username, password);
-
+                try
+                {
+                    user = userService.ValidateLogin(username, password);
                 }
                 catch
                 {
                     user = null;
                 }
+
                 
                 if(user == null)
                 {
@@ -50,6 +52,13 @@ namespace Garden_Group
                     labelDisplayError.Text = "Password or username incorrect";
                     txtBoxPassword.Clear();
                     txtBoxUserName.Clear();
+                }
+                else if (user.GetJob() == Job.RegularEmployee)
+                {
+                    label1.Text = "well done regular employeee";
+                    serviceDesk = new ServiceDesk(user.GetEmployeeId());
+                    serviceDesk.Show();
+                    this.Hide();
                 }
                 else
                 {

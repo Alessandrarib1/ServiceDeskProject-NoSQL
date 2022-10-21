@@ -24,10 +24,11 @@ namespace GardenModel
         private string username { get; set; }
         [BsonElement("password")]
         private string password { get; set; }
-        [BsonElement("job")]
-        private string jobTitle { get; set; }
 
-        private Job job;
+        [BsonElement("job")]
+
+        private Job job { get; set; }
+
 
         public User(string username, string password, ObjectId objectId, int employeeId, Job job)
         {
@@ -35,8 +36,27 @@ namespace GardenModel
             this.password = password;
             this.employeeId = employeeId;
             this.objectId = objectId;
-            this.job = GetJob();
+            this.job = (Job)job;
         }
+
+        public Job GetJob()
+        {
+
+            return job;
+        }
+        /*  [BsonElement("job")]
+          private string jobTitle { get; set; }
+
+          private Job job;*/
+
+        /*  public User(string username, string password, ObjectId objectId, int employeeId, Job job)
+          {
+              this.username = username;
+              this.password = password;
+              this.employeeId = employeeId;
+              this.objectId = objectId;
+              this.job = GetJob();
+          }*/
         public int GetEmployeeId()
         {
             return employeeId;
@@ -53,7 +73,7 @@ namespace GardenModel
         {
             return password;
         }
-        public Job GetJob()
+       /* public Job GetJob()
         {
             if (jobTitle == "Service Desk Employee")
             {
@@ -61,7 +81,7 @@ namespace GardenModel
             }
             else 
                 return Job.RegularEmployee;
-        }
+        }*/
 
     }
 }

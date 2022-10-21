@@ -32,12 +32,13 @@ namespace Garden_Group
         private void ShowPanel(Panel panel) //i tried making a function that would fit all three, but since each panel displays different things i couldnt do it as general as i wanted
 
         {
+
             if (panel == pnlDashboard)
             {
                 pnlIncidentManagement.Hide();
                 pnlUserManagement.Hide();
                 pnlTicketCreation.Hide();
-
+                
                 pnlDashboard.Show();
                 pnlDashboard.Dock = DockStyle.Fill;
             }
@@ -46,7 +47,7 @@ namespace Garden_Group
                 pnlDashboard.Hide();
                 pnlUserManagement.Hide();
                 pnlTicketCreation.Hide();
-
+                
                 pnlIncidentManagement.Show();
                 pnlIncidentManagement.Dock = DockStyle.Fill;
 
@@ -57,7 +58,7 @@ namespace Garden_Group
                 pnlDashboard.Hide();
                 pnlIncidentManagement.Hide();
                 pnlTicketCreation.Hide();
-
+                
                 pnlUserManagement.Show();
                 pnlUserManagement.Dock = DockStyle.Fill;
             }
@@ -66,11 +67,11 @@ namespace Garden_Group
                 pnlDashboard.Hide();
                 pnlIncidentManagement.Hide();
                 pnlUserManagement.Hide();
-
+                
                 pnlTicketCreation.Show();
                 pnlTicketCreation.Dock = DockStyle.Fill;
             }
-
+            
             /* i had a lovely little code of
              * 
              * foreach (Panel p in this.Controls){
