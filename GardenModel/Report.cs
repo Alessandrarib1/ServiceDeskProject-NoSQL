@@ -11,13 +11,13 @@ namespace GardenModel
     public class Report
     {
         [BsonId]
-        public ObjectId objectId { get; set; }
+        public ObjectId objectId { get; private set; }
 
         [BsonElement ("employeeId")]
-        public int employeeId { get; set; }
+        public int employeeId { get; private set; }
 
         [BsonElement ("description")]
-        public string description { get; set; }
+        public string description { get; private set; }
 
         public Report(int employeeId, string description)
         {
