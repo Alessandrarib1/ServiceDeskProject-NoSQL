@@ -38,10 +38,10 @@ namespace GardenDAL
             reportCollection.DeleteOne(s => s == report);
         }
 
-        public void UpdateReport(Report report)
+        public void UpdateReport(Report reportToChange, Report newReport)
         {
-            var updateParams = Builders<Report>.Update.Set("employeeId", report.employeeId).Set("description", report.description);
-            reportCollection.UpdateOne(s => s == report, updateParams);
+            var updateParams = Builders<Report>.Update.Set("employeeId", newReport.employeeId).Set("description", newReport.description);
+            reportCollection.UpdateOne(s => s == reportToChange, updateParams);
         }
     }
 }
