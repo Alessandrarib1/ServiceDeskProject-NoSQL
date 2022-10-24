@@ -9,7 +9,7 @@ using MongoDB.Driver;
 
 namespace GardenDAL
 {
-    class ReportDao : BaseDao
+    public class ReportDao : BaseDao
     {
         public IMongoCollection<Report> reportCollection;
 
