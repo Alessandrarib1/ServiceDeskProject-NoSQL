@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace GardenModel
 {
     public class Report
     {
-        private int employeeNumber { get; set; }
+        [BsonId]
+        public ObjectId objectId { get; set; }
+
+        [BsonElement ("employeeId")]
+        public int employeeId { get; set; }
+
+        [BsonElement ("description")]
         public string description { get; set; }
 
-        public Report(int employeeNumber, string description)
+        public Report(int employeeId, string description)
         {
-            this.employeeNumber = employeeNumber;
+            this.employeeId = employeeId;
             this.description = description;
         }
     }
