@@ -20,8 +20,7 @@ namespace Garden_Group
     {       
         private string username;
         private string password;
-        public UserService userService = new UserService();
-        public ServiceDesk serviceDesk;
+        
         public Login()
         {
             InitializeComponent();
@@ -38,6 +37,7 @@ namespace Garden_Group
                 username = txtBoxUserName.Text;
                 try
                 {
+                    UserService userService = new UserService();
                     user = userService.ValidateLogin(username, password);
                 }
                 catch
@@ -56,7 +56,7 @@ namespace Garden_Group
                 else if (user.GetJob() == Job.RegularEmployee)
                 {
                     label1.Text = "well done regular employeee";
-                    serviceDesk = new ServiceDesk(user.GetEmployeeId());
+                    ServiceDesk serviceDesk = new ServiceDesk(user.GetEmployeeId());
                     serviceDesk.Show();
                     this.Hide();
                 }

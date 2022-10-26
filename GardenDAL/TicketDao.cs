@@ -13,9 +13,11 @@ namespace GardenDAL
     {
         public IMongoCollection<Ticket> collectionOfTickets;
 
+
         public TicketDao()
         {
             collectionOfTickets = db.GetCollection<Ticket>("Tickets");
+           
         }
 
         public List<Ticket> GetAllTickets()
@@ -58,5 +60,6 @@ namespace GardenDAL
             var updateDef = Builders<Ticket>.Update.Set("employeeId", Ticket.employeeId).Set("category", Ticket.ticketCategory).Set("status", Ticket.ticketStatus).Set("priority", Ticket.ticketPriority).Set("description", Ticket.description);
             collectionOfTickets.UpdateOne(s => s.objectId == ObjectId, updateDef);
         }
+       
     }
 }
