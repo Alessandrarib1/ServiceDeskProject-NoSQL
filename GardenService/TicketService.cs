@@ -12,10 +12,15 @@ namespace GardenService
     public class TicketService
     {
         public TicketDao ticketDao = new TicketDao();
+        public SortTicketDao sortTicket = new SortTicketDao();
 
         public List<Ticket> GetAllTickets()
         {
             return ticketDao.GetAllTickets();
+        }
+        public List<Ticket> GetTicketsSortedByPriority()
+        {
+            return sortTicket.SortTicketByPriority();
         }
 
         public Ticket GetTicket(ObjectId objectId)
@@ -41,5 +46,11 @@ namespace GardenService
         {
             ticketDao.DeleteTicket(tempObjId);
         }
+        /*public List<Ticket> SortTicketByHighPriority()
+        {
+            SortTicketDao sortTicketDao = new SortTicketDao();
+            List<Ticket> sortedTickets = sortTicketDao.SortTicketByPriority(GetAllTickets()); ;
+        }*/
+
     }
 }

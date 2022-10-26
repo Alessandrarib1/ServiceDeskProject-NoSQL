@@ -51,7 +51,8 @@ namespace Garden_Group
                 pnlIncidentManagement.Show();
                 pnlIncidentManagement.Dock = DockStyle.Fill;
 
-                DisplayAllTickets();
+                //DisplayAllTickets();
+                DisplayTicketsByPriority();
             }
             else if (panel == pnlUserManagement)
             {
@@ -127,6 +128,11 @@ namespace Garden_Group
             tickets = ticketService.GetAllTickets();
             DisplayTickets();
         }
+        private void DisplayTicketsByPriority()
+        {
+            tickets = ticketService.GetTicketsSortedByPriority();
+            DisplayTickets();
+        }
 
         private void DisplayTicketsWithStatus(Status status)
         {
@@ -138,7 +144,8 @@ namespace Garden_Group
         //Button presses for different ticket displays
         private void toolStripAllTickets_Click(object sender, EventArgs e)
         {
-            DisplayAllTickets();
+            // DisplayAllTickets();
+            DisplayTicketsByPriority();
         }
 
         private void toolStripOpen_Click(object sender, EventArgs e)
