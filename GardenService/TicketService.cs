@@ -18,6 +18,12 @@ namespace GardenService
         {
             return ticketDao.GetAllTickets();
         }
+
+        public List<Ticket> GetTicketsOfUser(User user)
+        {
+            return ticketDao.GetTicketsOfUser(user);
+        }
+
         public List<Ticket> GetTicketsSortedByPriority()
         {
             return sortTicket.SortTicketByPriority();

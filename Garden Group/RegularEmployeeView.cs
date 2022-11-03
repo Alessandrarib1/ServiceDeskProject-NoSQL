@@ -23,8 +23,9 @@ namespace Garden_Group
 
             welcomeLabel.Text = "Welcome, " + user.GetUsername() + "!";
 
-            ShowPanel(reportIncidentsPanel);
+            ShowPanel(viewReportsTicketsPanel);
             DisplayUserIncidents(user);
+            DisplayUserTickets(user);
         }
 
         private void ShowPanel(Panel panel)
@@ -65,8 +66,22 @@ namespace Garden_Group
             ticketsListView.View = View.Details;
 
             TicketService ticketService = new TicketService();
-            List<Ticket> tickets = ticketService.GetTicketsWithStatus();
-            incidentsListView.Columns.Add("Category", 60);
+            List<Ticket> tickets = ticketService.GetTicketsOfUser(user);
+
+            ticketsListView.Columns.Add("Category", 60);
+            ticketsListView.Columns.Add("Status", 60);
+            ticketsListView.Columns.Add("Priority", 60);
+            ticketsListView.Columns.Add("Description", 60);
+
+            foreach(Ticket ticket in tickets)
+            {
+                ListViewItem ticketItem = new ListViewItem(ticket.ticketCategory.ToString());
+                ticketItem.SubItems.Add(ticket.ticketStatus.ToString());
+                ticketItem.SubItems.Add(ticket.ticketPriority.ToString());
+                ticketItem.SubItems.Add(ticket.description.ToString());
+
+                ticketsListView.Items.Add(ticketItem);
+            }
         }
 
         private void viewReportsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,6 +93,20 @@ namespace Garden_Group
         private void reportIncidentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowPanel(reportIncidentsPanel);
+        }
+
+        private void submitIncidentButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ReportService reportService = new ReportService();
+                reportService.CreateReport(new Report(user.GetEmployeeId(), descriptionTextField.Text));
+                descriptionTextField.Clear();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

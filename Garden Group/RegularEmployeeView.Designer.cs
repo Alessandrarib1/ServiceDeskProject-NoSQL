@@ -43,7 +43,11 @@ namespace Garden_Group
             this.ticketCategoryCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ticketPriorityCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ticketDescriptionCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.descriptionTextField = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.submitIncidentButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            this.reportIncidentsPanel.SuspendLayout();
             this.viewReportsTicketsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,6 +78,9 @@ namespace Garden_Group
             // 
             // reportIncidentsPanel
             // 
+            this.reportIncidentsPanel.Controls.Add(this.submitIncidentButton);
+            this.reportIncidentsPanel.Controls.Add(this.label3);
+            this.reportIncidentsPanel.Controls.Add(this.descriptionTextField);
             this.reportIncidentsPanel.Location = new System.Drawing.Point(12, 72);
             this.reportIncidentsPanel.Name = "reportIncidentsPanel";
             this.reportIncidentsPanel.Size = new System.Drawing.Size(576, 282);
@@ -85,7 +92,7 @@ namespace Garden_Group
             this.viewReportsTicketsPanel.Controls.Add(this.label2);
             this.viewReportsTicketsPanel.Controls.Add(this.label1);
             this.viewReportsTicketsPanel.Controls.Add(this.incidentsListView);
-            this.viewReportsTicketsPanel.Location = new System.Drawing.Point(11, 72);
+            this.viewReportsTicketsPanel.Location = new System.Drawing.Point(12, 72);
             this.viewReportsTicketsPanel.Name = "viewReportsTicketsPanel";
             this.viewReportsTicketsPanel.Size = new System.Drawing.Size(576, 283);
             this.viewReportsTicketsPanel.TabIndex = 1;
@@ -161,20 +168,51 @@ namespace Garden_Group
             // 
             this.ticketDescriptionCol.Text = "Description";
             // 
+            // descriptionTextField
+            // 
+            this.descriptionTextField.Location = new System.Drawing.Point(109, 60);
+            this.descriptionTextField.Multiline = true;
+            this.descriptionTextField.Name = "descriptionTextField";
+            this.descriptionTextField.Size = new System.Drawing.Size(332, 150);
+            this.descriptionTextField.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(141, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(266, 26);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Describe your issue below";
+            // 
+            // submitIncidentButton
+            // 
+            this.submitIncidentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submitIncidentButton.Location = new System.Drawing.Point(229, 227);
+            this.submitIncidentButton.Name = "submitIncidentButton";
+            this.submitIncidentButton.Size = new System.Drawing.Size(87, 34);
+            this.submitIncidentButton.TabIndex = 2;
+            this.submitIncidentButton.Text = "Submit";
+            this.submitIncidentButton.UseVisualStyleBackColor = true;
+            this.submitIncidentButton.Click += new System.EventHandler(this.submitIncidentButton_Click);
+            // 
             // RegularEmployeeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.welcomeLabel);
-            this.Controls.Add(this.viewReportsTicketsPanel);
             this.Controls.Add(this.reportIncidentsPanel);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.viewReportsTicketsPanel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "RegularEmployeeView";
             this.Text = "RegularEmployeeView";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.reportIncidentsPanel.ResumeLayout(false);
+            this.reportIncidentsPanel.PerformLayout();
             this.viewReportsTicketsPanel.ResumeLayout(false);
             this.viewReportsTicketsPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -198,5 +236,8 @@ namespace Garden_Group
         private System.Windows.Forms.ColumnHeader ticketCategoryCol;
         private System.Windows.Forms.ColumnHeader ticketPriorityCol;
         private System.Windows.Forms.ColumnHeader ticketDescriptionCol;
+        private System.Windows.Forms.TextBox descriptionTextField;
+        private System.Windows.Forms.Button submitIncidentButton;
+        private System.Windows.Forms.Label label3;
     }
 }
