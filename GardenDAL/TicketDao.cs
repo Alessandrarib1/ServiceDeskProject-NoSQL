@@ -25,7 +25,12 @@ namespace GardenDAL
             List<Ticket> tickets = collectionOfTickets.AsQueryable().ToList<Ticket>();
             return tickets;
         }
-        
+
+        public List<Ticket> GetTicketsOfUser(User user)
+        {
+            return collectionOfTickets.Find(x => x.employeeId == user.GetEmployeeId()).ToList<Ticket>();
+        }
+
         public List<Ticket> GetTicketsWithStatus(Status status)
         {
             List<Ticket> tickets = collectionOfTickets.Find(x => x.ticketStatus == status).ToList<Ticket>();

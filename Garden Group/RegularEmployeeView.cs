@@ -59,6 +59,16 @@ namespace Garden_Group
             }
         }
 
+        private void DisplayUserTickets(User user)
+        {
+            ticketsListView.Clear();
+            ticketsListView.View = View.Details;
+
+            TicketService ticketService = new TicketService();
+            List<Ticket> tickets = ticketService.GetTicketsWithStatus();
+            incidentsListView.Columns.Add("Category", 60);
+        }
+
         private void viewReportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowPanel(viewReportsTicketsPanel);
