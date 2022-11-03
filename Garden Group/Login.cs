@@ -53,7 +53,7 @@ namespace Garden_Group
                     txtBoxPassword.Clear();
                     txtBoxUserName.Clear();
                 }
-                else if (user.GetJob() == Job.RegularEmployee)
+                else if (user.GetJob() == Job.ServiceDeskEmployee)
                 {
                     label1.Text = "well done regular employeee";
                     ServiceDesk serviceDesk = new ServiceDesk(user.GetEmployeeId());
@@ -62,8 +62,9 @@ namespace Garden_Group
                 }
                 else
                 {
-                    labelDisplayError.Visible = true;
-                    labelDisplayError.Text = "Login succeeded";
+                    RegularEmployeeView regularEmployeeView = new RegularEmployeeView(user);
+                    regularEmployeeView.Show();
+                    this.Hide();
                 }
 
             }

@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RegularEmployeeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegularEmployeeView.Designer.cs">
+      <DependentUpon>RegularEmployeeView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceDesk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RegularEmployeeView.resx">
+      <DependentUpon>RegularEmployeeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServiceDesk.resx">
       <DependentUpon>ServiceDesk.cs</DependentUpon>
     </EmbeddedResource>

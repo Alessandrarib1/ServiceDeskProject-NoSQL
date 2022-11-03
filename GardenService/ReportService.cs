@@ -11,7 +11,7 @@ namespace GardenService
 {
     public class ReportService
     {
-        public ReportDao reportDao;
+        public ReportDao reportDao = new ReportDao();
 
         public List<Report> GetAllReports()
         {

@@ -32,8 +32,8 @@ namespace Garden_Group
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.viewReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportIncidentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportIncidentsPanel = new System.Windows.Forms.Panel();
             this.viewReportsTicketsPanel = new System.Windows.Forms.Panel();
-            this.reportIncidentPanel = new System.Windows.Forms.Panel();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.incidentsListView = new System.Windows.Forms.ListView();
             this.reportDescriptionCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,7 +44,7 @@ namespace Garden_Group
             this.ticketPriorityCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ticketDescriptionCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
-            this.reportIncidentPanel.SuspendLayout();
+            this.viewReportsTicketsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -72,24 +72,24 @@ namespace Garden_Group
             this.reportIncidentToolStripMenuItem.Text = "Report Incident";
             this.reportIncidentToolStripMenuItem.Click += new System.EventHandler(this.reportIncidentToolStripMenuItem_Click);
             // 
+            // reportIncidentsPanel
+            // 
+            this.reportIncidentsPanel.Location = new System.Drawing.Point(12, 72);
+            this.reportIncidentsPanel.Name = "reportIncidentsPanel";
+            this.reportIncidentsPanel.Size = new System.Drawing.Size(576, 282);
+            this.reportIncidentsPanel.TabIndex = 1;
+            // 
             // viewReportsTicketsPanel
             // 
-            this.viewReportsTicketsPanel.Location = new System.Drawing.Point(12, 72);
+            this.viewReportsTicketsPanel.Controls.Add(this.ticketsListView);
+            this.viewReportsTicketsPanel.Controls.Add(this.label2);
+            this.viewReportsTicketsPanel.Controls.Add(this.label1);
+            this.viewReportsTicketsPanel.Controls.Add(this.incidentsListView);
+            this.viewReportsTicketsPanel.Location = new System.Drawing.Point(11, 72);
             this.viewReportsTicketsPanel.Name = "viewReportsTicketsPanel";
-            this.viewReportsTicketsPanel.Size = new System.Drawing.Size(576, 282);
+            this.viewReportsTicketsPanel.Size = new System.Drawing.Size(576, 283);
             this.viewReportsTicketsPanel.TabIndex = 1;
-            // 
-            // reportIncidentPanel
-            // 
-            this.reportIncidentPanel.Controls.Add(this.ticketsListView);
-            this.reportIncidentPanel.Controls.Add(this.label2);
-            this.reportIncidentPanel.Controls.Add(this.label1);
-            this.reportIncidentPanel.Controls.Add(this.incidentsListView);
-            this.reportIncidentPanel.Location = new System.Drawing.Point(11, 72);
-            this.reportIncidentPanel.Name = "reportIncidentPanel";
-            this.reportIncidentPanel.Size = new System.Drawing.Size(576, 283);
-            this.reportIncidentPanel.TabIndex = 1;
-            this.reportIncidentPanel.Visible = false;
+            this.viewReportsTicketsPanel.Visible = false;
             // 
             // welcomeLabel
             // 
@@ -143,7 +143,7 @@ namespace Garden_Group
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(338, 18);
+            this.label2.Location = new System.Drawing.Point(331, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(190, 29);
             this.label2.TabIndex = 1;
@@ -167,16 +167,16 @@ namespace Garden_Group
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.welcomeLabel);
-            this.Controls.Add(this.reportIncidentPanel);
             this.Controls.Add(this.viewReportsTicketsPanel);
+            this.Controls.Add(this.reportIncidentsPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "RegularEmployeeView";
             this.Text = "RegularEmployeeView";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.reportIncidentPanel.ResumeLayout(false);
-            this.reportIncidentPanel.PerformLayout();
+            this.viewReportsTicketsPanel.ResumeLayout(false);
+            this.viewReportsTicketsPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,8 +187,8 @@ namespace Garden_Group
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem viewReportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportIncidentToolStripMenuItem;
+        private System.Windows.Forms.Panel reportIncidentsPanel;
         private System.Windows.Forms.Panel viewReportsTicketsPanel;
-        private System.Windows.Forms.Panel reportIncidentPanel;
         private System.Windows.Forms.ListView incidentsListView;
         private System.Windows.Forms.ColumnHeader reportDescriptionCol;
         private System.Windows.Forms.Label welcomeLabel;
