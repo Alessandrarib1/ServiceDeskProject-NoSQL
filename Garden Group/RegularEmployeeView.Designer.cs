@@ -209,6 +209,7 @@ namespace Garden_Group
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "RegularEmployeeView";
             this.Text = "RegularEmployeeView";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegularEmployeeView_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.reportIncidentsPanel.ResumeLayout(false);

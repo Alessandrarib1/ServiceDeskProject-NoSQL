@@ -108,5 +108,10 @@ namespace Garden_Group
                 Console.WriteLine(ex.Message);
             }
         }
+
+        private void RegularEmployeeView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
