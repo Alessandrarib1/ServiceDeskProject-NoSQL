@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace GardenDAL
 {
+    //Additional function made by Alessandra Ribeiro (689693)
     public class SortTicketDao : BaseDao
     {
         public IMongoCollection<Ticket> collectionOfTickets;

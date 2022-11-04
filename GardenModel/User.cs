@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -29,14 +28,21 @@ namespace GardenModel
 
         private Job job { get; set; }
 
+        [BsonElement("salt")]
+        private string salt;
 
-        public User(string username, string password, ObjectId objectId, int employeeId, Job job)
+
+
+
+        public User(string username, string password, ObjectId objectId, int employeeId, Job job, string salt)
         {
             this.username = username;
             this.password = password;
             this.employeeId = employeeId;
             this.objectId = objectId;
             this.job = (Job)job;
+            this.salt = salt;
+
         }
 
         public Job GetJob()
@@ -44,19 +50,7 @@ namespace GardenModel
 
             return job;
         }
-        /*  [BsonElement("job")]
-          private string jobTitle { get; set; }
 
-          private Job job;*/
-
-        /*  public User(string username, string password, ObjectId objectId, int employeeId, Job job)
-          {
-              this.username = username;
-              this.password = password;
-              this.employeeId = employeeId;
-              this.objectId = objectId;
-              this.job = GetJob();
-          }*/
         public int GetEmployeeId()
         {
             return employeeId;
@@ -73,15 +67,6 @@ namespace GardenModel
         {
             return password;
         }
-       /* public Job GetJob()
-        {
-            if (jobTitle == "Service Desk Employee")
-            {
-                return Job.ServiceDeskEmployee;
-            }
-            else 
-                return Job.RegularEmployee;
-        }*/
 
     }
 }
