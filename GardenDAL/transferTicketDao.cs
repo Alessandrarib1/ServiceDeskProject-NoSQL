@@ -9,6 +9,7 @@ using MongoDB.Driver;
 
 namespace GardenDAL
 {
+    //Additional function made by Tudor Matei Nosca (678549)
     public class transferTicketDao : BaseDao
     {
         public IMongoCollection<User> userCollection;

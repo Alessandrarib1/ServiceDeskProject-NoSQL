@@ -271,6 +271,7 @@ namespace Garden_Group
             try
             {
                 ticketToTransfer = ticketService.GetTicket(ObjectId.Parse(listViewTickets.SelectedItems[0].Text));
+
             }catch(Exception ex)
             {
 
@@ -286,7 +287,7 @@ namespace Garden_Group
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+
             }
         }
     }
