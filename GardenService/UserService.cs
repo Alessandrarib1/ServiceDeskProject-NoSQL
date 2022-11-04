@@ -12,6 +12,12 @@ namespace GardenService
     public class UserService
     {
         public UserDao userDao = new UserDao();
+
+        public List<User> GetUsers()
+        {
+            return userDao.GetUsers();
+        }
+
         public User ValidateLogin(String username, String password)
         {
             return userDao.VerifyLogin(username, password);

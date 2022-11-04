@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="changeEmployeeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="changeEmployeeDialog.Designer.cs">
+      <DependentUpon>changeEmployeeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegularEmployeeView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="changeEmployeeDialog.resx">
+      <DependentUpon>changeEmployeeDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

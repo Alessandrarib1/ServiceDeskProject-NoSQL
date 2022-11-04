@@ -20,6 +20,8 @@ namespace Garden_Group
         Ticket tempTicket;
         int userId;
 
+        Ticket ticketToTransfer;
+
         public ServiceDesk(int employeeId)
         {
             InitializeComponent();
@@ -262,6 +264,30 @@ namespace Garden_Group
                 txtDescription.Text = ticket.description;
         }
 
-        
+        private void listViewTickets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            changeEmployeeButton.Enabled = true;
+
+            try
+            {
+                ticketToTransfer = ticketService.GetTicket(ObjectId.Parse(listViewTickets.SelectedItems[0].Text));
+            }catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void changeEmployeeButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                changeEmployeeDialog changeEmployeeDialog = new changeEmployeeDialog(ticketToTransfer);
+                changeEmployeeDialog.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
