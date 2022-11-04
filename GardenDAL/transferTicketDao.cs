@@ -20,7 +20,9 @@ namespace GardenDAL
 
         public User GetUserByUsername(string username)
         {
-            return (User) userCollection.Find(x => x.GetUsername() == username);
+            var filter = Builders<User>.Filter.Eq("username", username);
+
+            return userCollection.Find(filter).FirstOrDefault();
         }
     }
 }

@@ -9,7 +9,7 @@ using MongoDB.Bson;
 
 namespace GardenService
 {
-    class transferTicketService
+    public class transferTicketService
     {
         public transferTicketDao transferDao = new transferTicketDao();
 

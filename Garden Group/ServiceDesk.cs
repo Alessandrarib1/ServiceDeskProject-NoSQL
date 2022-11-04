@@ -130,7 +130,7 @@ namespace Garden_Group
             tickets = ticketService.GetAllTickets();
             DisplayTickets();
         }
-        private void DisplayTicketsByPriority()
+        public void DisplayTicketsByPriority()
         {
             tickets = ticketService.GetTicketsSortedByPriority();
             DisplayTickets();
@@ -281,7 +281,7 @@ namespace Garden_Group
         {
             try
             {
-                changeEmployeeDialog changeEmployeeDialog = new changeEmployeeDialog(ticketToTransfer);
+                changeEmployeeDialog changeEmployeeDialog = new changeEmployeeDialog(ticketToTransfer, this);
                 changeEmployeeDialog.ShowDialog();
             }
             catch(Exception ex)

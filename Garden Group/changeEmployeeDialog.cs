@@ -15,10 +15,12 @@ namespace Garden_Group
     public partial class changeEmployeeDialog : Form
     {
         Ticket ticket;
+        ServiceDesk serviceDesk;
 
-        public changeEmployeeDialog(Ticket ticket)
+        public changeEmployeeDialog(Ticket ticket, ServiceDesk serviceDesk)
         {
             this.ticket = ticket;
+            this.serviceDesk = serviceDesk;
             InitializeComponent();
             FillComboBox();
         }
@@ -32,6 +34,18 @@ namespace Garden_Group
             {
                 employeeComboBox.Items.Add(user.GetUsername());
             }
+        }
+
+        private void confirmButton_Click(object sender, EventArgs e)
+        {
+            transferTicketService transferService = new transferTicketService();
+            TicketService ticketService = new TicketService();
+
+            User user = transferService.GetUserByUsername(employeeComboBox.Text);
+
+            ticketService.UpdateTicket(ticket.objectId, new Ticket(user.GetEmployeeId(), (int) ticket.ticketCategory, (int) ticket.ticketStatus, (int) ticket.ticketPriority, ticket.description));
+            serviceDesk.DisplayTicketsByPriority();
+            this.Close();
         }
     }
 }
