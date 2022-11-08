@@ -56,7 +56,7 @@ namespace Garden_Group
                 else if (user.GetJob() == Job.ServiceDeskEmployee)
                 {
                     label1.Text = "well done regular employeee";
-                    ServiceDesk serviceDesk = new ServiceDesk(user.GetEmployeeId());
+                    ServiceDesk serviceDesk = new ServiceDesk(user);
                     serviceDesk.Show();
                     this.Hide();
                 }

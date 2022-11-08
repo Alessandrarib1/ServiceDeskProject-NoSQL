@@ -67,6 +67,9 @@ namespace GardenModel
         {
             return password;
         }
-
+        public string GetName()
+        {
+            return name;
+        }
     }
 }

@@ -8,7 +8,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace GardenModel
 {
-    public class Ticket
+    public class Ticket //IDEC
     {
         [BsonId]
         public ObjectId objectId { get; set; }

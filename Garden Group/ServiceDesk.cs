@@ -13,19 +13,24 @@ using MongoDB.Bson;
 
 namespace Garden_Group
 {
-    public partial class ServiceDesk : Form
+    public partial class ServiceDesk : Form // IDEC
     {
         public TicketService ticketService = new TicketService();
+        public UserService userService = new UserService();
+
         List<Ticket> tickets;
+        List<User> users;
+
         Ticket tempTicket;
-        int userId;
+        User tempUser;
+        User currentUser;
 
         Ticket ticketToTransfer;
 
-        public ServiceDesk(int employeeId)
+        public ServiceDesk(User currentUser)
         {
             InitializeComponent();
-            userId = employeeId;
+            this.currentUser = currentUser;
 
             ShowPanel(pnlIncidentManagement);
         }
@@ -164,6 +169,7 @@ namespace Garden_Group
             DisplayTicketsWithStatus(Status.Unresolved);
         }
 
+        //CODE BELOW IS LEGACY; DONT TAKE OUT JUST YET
         /*private void listViewTickets_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -191,10 +197,42 @@ namespace Garden_Group
 
         //USER MANAGEMENT PANEL
 
+        private void toolStripUserManagement_Click(object sender, EventArgs e)
+        {
+            ShowPanel(pnlUserManagement);
+        }
+
+        private void DisplayUsers()
+        {
+            try
+            {
+                listViewUsers.Clear();
+                listViewUsers.View = View.Details;
+                listViewUsers.FullRowSelect = true;
+
+                listViewUsers.Columns.Add("Object Id");
+                listViewUsers.Columns.Add("User Id");
+                listViewUsers.Columns.Add("Username");
+                listViewUsers.Columns.Add("Name");
+                listViewUsers.Columns.Add("Job");
+                listViewUsers.Columns.Add("Tickets");
+
+                foreach (User u in users)
+                {
+                    ListViewItem ti = new ListViewItem(u.GetObjectId().ToString());
+                    ti.SubItems.Add(u.GetEmployeeId().ToString());
+                    ti.SubItems.Add(u.GetUsername());
+                    ti.SubItems.Add(u.GetName());
+                    ti.SubItems.Add(u.GetJob().ToString());
+
+                }
+            }
+        }
+
 
         //TICKET CREATION PANEL
 
-        private void toolStripTicketCreation_Click(object sender, EventArgs e)
+        private void btnCreateTicket_Click(object sender, EventArgs e)
         {
             ShowPanel(pnlTicketCreation);
         }
@@ -203,7 +241,7 @@ namespace Garden_Group
         {
             if (CheckFields())
             {
-                Ticket ticket = new Ticket(userId, (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
+                Ticket ticket = new Ticket(currentUser.GetEmployeeId(), (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
                 ticketService.CreateTicket(ticket);
                 MessageBox.Show("Ticket has been created!");
                 EmptyFields();
@@ -217,7 +255,7 @@ namespace Garden_Group
         {
             if (tempTicket != null && CheckFields())
             {
-                Ticket ticket = new Ticket(userId, (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
+                Ticket ticket = new Ticket(currentUser.GetEmployeeId(), (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
                 ticketService.UpdateTicket(tempTicket.objectId, ticket);
                 MessageBox.Show("Ticket has been updated!");
                 EmptyFields();
@@ -290,5 +328,7 @@ namespace Garden_Group
 
             }
         }
+
+        
     }
 }
