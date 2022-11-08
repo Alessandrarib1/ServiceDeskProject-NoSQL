@@ -35,7 +35,15 @@ namespace Garden_Group
             this.toolStripUserManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.pnlUserManagement = new System.Windows.Forms.Panel();
+            this.btnCreateUser = new System.Windows.Forms.Button();
+            this.listViewUsers = new System.Windows.Forms.ListView();
+            this.user_Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.userName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.userFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.userJob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ticketsOpen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlIncidentManagement = new System.Windows.Forms.Panel();
+            this.btnCreateTicket = new System.Windows.Forms.Button();
             this.changeEmployeeButton = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,18 +68,24 @@ namespace Garden_Group
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCreateTicket = new System.Windows.Forms.Button();
-            this.listViewUsers = new System.Windows.Forms.ListView();
-            this.user_Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.userName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.userFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.userJob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ticketsOpen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pnlUserCreation = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.btnUserDelete = new System.Windows.Forms.Button();
+            this.btnUserUpdate = new System.Windows.Forms.Button();
+            this.btnUserCreate = new System.Windows.Forms.Button();
+            this.comboBoxJob = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.pnlUserManagement.SuspendLayout();
             this.pnlIncidentManagement.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.pnlTicketCreation.SuspendLayout();
+            this.pnlUserCreation.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -84,27 +98,27 @@ namespace Garden_Group
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // toolStripDashboard
             // 
             this.toolStripDashboard.Name = "toolStripDashboard";
-            this.toolStripDashboard.Size = new System.Drawing.Size(96, 26);
+            this.toolStripDashboard.Size = new System.Drawing.Size(96, 24);
             this.toolStripDashboard.Text = "Dashboard";
             // 
             // toolStripIncidentManagement
             // 
             this.toolStripIncidentManagement.Name = "toolStripIncidentManagement";
-            this.toolStripIncidentManagement.Size = new System.Drawing.Size(168, 26);
+            this.toolStripIncidentManagement.Size = new System.Drawing.Size(168, 24);
             this.toolStripIncidentManagement.Text = "Incident Management";
             this.toolStripIncidentManagement.Click += new System.EventHandler(this.toolStripIncidentManagement_Click);
             // 
             // toolStripUserManagement
             // 
             this.toolStripUserManagement.Name = "toolStripUserManagement";
-            this.toolStripUserManagement.Size = new System.Drawing.Size(144, 26);
+            this.toolStripUserManagement.Size = new System.Drawing.Size(144, 24);
             this.toolStripUserManagement.Text = "User Management";
             this.toolStripUserManagement.Click += new System.EventHandler(this.toolStripUserManagement_Click);
             // 
@@ -118,12 +132,66 @@ namespace Garden_Group
             // 
             // pnlUserManagement
             // 
+            this.pnlUserManagement.Controls.Add(this.btnCreateUser);
             this.pnlUserManagement.Controls.Add(this.listViewUsers);
-            this.pnlUserManagement.Location = new System.Drawing.Point(12, 30);
+            this.pnlUserManagement.Location = new System.Drawing.Point(793, 32);
             this.pnlUserManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlUserManagement.Name = "pnlUserManagement";
-            this.pnlUserManagement.Size = new System.Drawing.Size(776, 409);
+            this.pnlUserManagement.Size = new System.Drawing.Size(128, 81);
             this.pnlUserManagement.TabIndex = 2;
+            // 
+            // btnCreateUser
+            // 
+            this.btnCreateUser.Location = new System.Drawing.Point(623, 18);
+            this.btnCreateUser.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreateUser.Name = "btnCreateUser";
+            this.btnCreateUser.Size = new System.Drawing.Size(148, 28);
+            this.btnCreateUser.TabIndex = 4;
+            this.btnCreateUser.Text = "Create user";
+            this.btnCreateUser.UseVisualStyleBackColor = true;
+            this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
+            // 
+            // listViewUsers
+            // 
+            this.listViewUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.user_Id,
+            this.userName,
+            this.userFirstName,
+            this.userJob,
+            this.ticketsOpen});
+            this.listViewUsers.HideSelection = false;
+            this.listViewUsers.Location = new System.Drawing.Point(26, 61);
+            this.listViewUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listViewUsers.Name = "listViewUsers";
+            this.listViewUsers.Size = new System.Drawing.Size(746, 346);
+            this.listViewUsers.TabIndex = 1;
+            this.listViewUsers.UseCompatibleStateImageBehavior = false;
+            this.listViewUsers.View = System.Windows.Forms.View.Details;
+            this.listViewUsers.DoubleClick += new System.EventHandler(this.listViewUsers_DoubleClick);
+            // 
+            // user_Id
+            // 
+            this.user_Id.Text = "Id";
+            this.user_Id.Width = 79;
+            // 
+            // userName
+            // 
+            this.userName.Text = "Username";
+            this.userName.Width = 216;
+            // 
+            // userFirstName
+            // 
+            this.userFirstName.Text = "First name";
+            this.userFirstName.Width = 222;
+            // 
+            // userJob
+            // 
+            this.userJob.Text = "Job";
+            this.userJob.Width = 165;
+            // 
+            // ticketsOpen
+            // 
+            this.ticketsOpen.Text = "Tickets";
             // 
             // pnlIncidentManagement
             // 
@@ -131,17 +199,28 @@ namespace Garden_Group
             this.pnlIncidentManagement.Controls.Add(this.changeEmployeeButton);
             this.pnlIncidentManagement.Controls.Add(this.menuStrip2);
             this.pnlIncidentManagement.Controls.Add(this.listViewTickets);
-            this.pnlIncidentManagement.Location = new System.Drawing.Point(790, 220);
+            this.pnlIncidentManagement.Location = new System.Drawing.Point(793, 225);
             this.pnlIncidentManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlIncidentManagement.Name = "pnlIncidentManagement";
-            this.pnlIncidentManagement.Size = new System.Drawing.Size(96, 67);
+            this.pnlIncidentManagement.Size = new System.Drawing.Size(47, 47);
             this.pnlIncidentManagement.TabIndex = 2;
+            // 
+            // btnCreateTicket
+            // 
+            this.btnCreateTicket.Location = new System.Drawing.Point(452, 1);
+            this.btnCreateTicket.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreateTicket.Name = "btnCreateTicket";
+            this.btnCreateTicket.Size = new System.Drawing.Size(148, 28);
+            this.btnCreateTicket.TabIndex = 3;
+            this.btnCreateTicket.Text = "Create ticket";
+            this.btnCreateTicket.UseVisualStyleBackColor = true;
+            this.btnCreateTicket.Click += new System.EventHandler(this.btnCreateTicket_Click);
             // 
             // changeEmployeeButton
             // 
             this.changeEmployeeButton.Enabled = false;
             this.changeEmployeeButton.Location = new System.Drawing.Point(608, 1);
-            this.changeEmployeeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.changeEmployeeButton.Margin = new System.Windows.Forms.Padding(4);
             this.changeEmployeeButton.Name = "changeEmployeeButton";
             this.changeEmployeeButton.Size = new System.Drawing.Size(148, 28);
             this.changeEmployeeButton.TabIndex = 2;
@@ -160,35 +239,35 @@ namespace Garden_Group
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(96, 30);
+            this.menuStrip2.Size = new System.Drawing.Size(47, 28);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
             // toolStripOpen
             // 
             this.toolStripOpen.Name = "toolStripOpen";
-            this.toolStripOpen.Size = new System.Drawing.Size(59, 26);
+            this.toolStripOpen.Size = new System.Drawing.Size(59, 24);
             this.toolStripOpen.Text = "Open";
             this.toolStripOpen.Click += new System.EventHandler(this.toolStripOpen_Click);
             // 
             // toolStripClosed
             // 
             this.toolStripClosed.Name = "toolStripClosed";
-            this.toolStripClosed.Size = new System.Drawing.Size(68, 26);
+            this.toolStripClosed.Size = new System.Drawing.Size(68, 24);
             this.toolStripClosed.Text = "Closed";
             this.toolStripClosed.Click += new System.EventHandler(this.toolStripClosed_Click);
             // 
             // toolStripUnresolved
             // 
             this.toolStripUnresolved.Name = "toolStripUnresolved";
-            this.toolStripUnresolved.Size = new System.Drawing.Size(97, 26);
+            this.toolStripUnresolved.Size = new System.Drawing.Size(97, 24);
             this.toolStripUnresolved.Text = "Unresolved";
             this.toolStripUnresolved.Click += new System.EventHandler(this.toolStripUnresolved_Click);
             // 
             // toolStripAllTickets
             // 
             this.toolStripAllTickets.Name = "toolStripAllTickets";
-            this.toolStripAllTickets.Size = new System.Drawing.Size(41, 26);
+            this.toolStripAllTickets.Size = new System.Drawing.Size(41, 24);
             this.toolStripAllTickets.Text = "All";
             this.toolStripAllTickets.Click += new System.EventHandler(this.toolStripAllTickets_Click);
             // 
@@ -248,10 +327,10 @@ namespace Garden_Group
             this.pnlTicketCreation.Controls.Add(this.label3);
             this.pnlTicketCreation.Controls.Add(this.label2);
             this.pnlTicketCreation.Controls.Add(this.label1);
-            this.pnlTicketCreation.Location = new System.Drawing.Point(793, 345);
+            this.pnlTicketCreation.Location = new System.Drawing.Point(794, 354);
             this.pnlTicketCreation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTicketCreation.Name = "pnlTicketCreation";
-            this.pnlTicketCreation.Size = new System.Drawing.Size(146, 94);
+            this.pnlTicketCreation.Size = new System.Drawing.Size(73, 47);
             this.pnlTicketCreation.TabIndex = 3;
             // 
             // btnDelete
@@ -373,63 +452,131 @@ namespace Garden_Group
             this.label1.TabIndex = 0;
             this.label1.Text = "Category";
             // 
-            // btnCreateTicket
+            // pnlUserCreation
             // 
-            this.btnCreateTicket.Location = new System.Drawing.Point(452, 1);
-            this.btnCreateTicket.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCreateTicket.Name = "btnCreateTicket";
-            this.btnCreateTicket.Size = new System.Drawing.Size(148, 28);
-            this.btnCreateTicket.TabIndex = 3;
-            this.btnCreateTicket.Text = "Create ticket";
-            this.btnCreateTicket.UseVisualStyleBackColor = true;
-            this.btnCreateTicket.Click += new System.EventHandler(this.btnCreateTicket_Click);
+            this.pnlUserCreation.Controls.Add(this.label5);
+            this.pnlUserCreation.Controls.Add(this.txtName);
+            this.pnlUserCreation.Controls.Add(this.txtPassword);
+            this.pnlUserCreation.Controls.Add(this.txtUsername);
+            this.pnlUserCreation.Controls.Add(this.btnUserDelete);
+            this.pnlUserCreation.Controls.Add(this.btnUserUpdate);
+            this.pnlUserCreation.Controls.Add(this.btnUserCreate);
+            this.pnlUserCreation.Controls.Add(this.comboBoxJob);
+            this.pnlUserCreation.Controls.Add(this.label6);
+            this.pnlUserCreation.Controls.Add(this.label7);
+            this.pnlUserCreation.Controls.Add(this.label8);
+            this.pnlUserCreation.Location = new System.Drawing.Point(12, 32);
+            this.pnlUserCreation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlUserCreation.Name = "pnlUserCreation";
+            this.pnlUserCreation.Size = new System.Drawing.Size(776, 407);
+            this.pnlUserCreation.TabIndex = 11;
             // 
-            // listViewUsers
+            // label5
             // 
-            this.listViewUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.user_Id,
-            this.userName,
-            this.userFirstName,
-            this.userJob,
-            this.ticketsOpen});
-            this.listViewUsers.HideSelection = false;
-            this.listViewUsers.Location = new System.Drawing.Point(26, 61);
-            this.listViewUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listViewUsers.Name = "listViewUsers";
-            this.listViewUsers.Size = new System.Drawing.Size(746, 345);
-            this.listViewUsers.TabIndex = 1;
-            this.listViewUsers.UseCompatibleStateImageBehavior = false;
-            this.listViewUsers.View = System.Windows.Forms.View.Details;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(65, 88);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 17);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Name";
             // 
-            // user_Id
+            // txtName
             // 
-            this.user_Id.Text = "Id";
-            this.user_Id.Width = 79;
+            this.txtName.Location = new System.Drawing.Point(171, 85);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(233, 22);
+            this.txtName.TabIndex = 13;
             // 
-            // userName
+            // txtPassword
             // 
-            this.userName.Text = "Username";
-            this.userName.Width = 216;
+            this.txtPassword.Location = new System.Drawing.Point(171, 197);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(233, 22);
+            this.txtPassword.TabIndex = 12;
             // 
-            // userFirstName
+            // txtUsername
             // 
-            this.userFirstName.Text = "First name";
-            this.userFirstName.Width = 178;
+            this.txtUsername.Location = new System.Drawing.Point(171, 36);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(233, 22);
+            this.txtUsername.TabIndex = 11;
             // 
-            // userJob
+            // btnUserDelete
             // 
-            this.userJob.Text = "Job";
-            this.userJob.Width = 122;
+            this.btnUserDelete.Location = new System.Drawing.Point(313, 277);
+            this.btnUserDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUserDelete.Name = "btnUserDelete";
+            this.btnUserDelete.Size = new System.Drawing.Size(91, 38);
+            this.btnUserDelete.TabIndex = 10;
+            this.btnUserDelete.Text = "Delete";
+            this.btnUserDelete.UseVisualStyleBackColor = true;
             // 
-            // ticketsOpen
+            // btnUserUpdate
             // 
-            this.ticketsOpen.Text = "Tickets";
+            this.btnUserUpdate.Location = new System.Drawing.Point(184, 277);
+            this.btnUserUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUserUpdate.Name = "btnUserUpdate";
+            this.btnUserUpdate.Size = new System.Drawing.Size(91, 38);
+            this.btnUserUpdate.TabIndex = 9;
+            this.btnUserUpdate.Text = "Update";
+            this.btnUserUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnUserCreate
+            // 
+            this.btnUserCreate.Location = new System.Drawing.Point(53, 277);
+            this.btnUserCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUserCreate.Name = "btnUserCreate";
+            this.btnUserCreate.Size = new System.Drawing.Size(91, 38);
+            this.btnUserCreate.TabIndex = 8;
+            this.btnUserCreate.Text = "Create";
+            this.btnUserCreate.UseVisualStyleBackColor = true;
+            this.btnUserCreate.Click += new System.EventHandler(this.btnUserCreate_Click);
+            // 
+            // comboBoxJob
+            // 
+            this.comboBoxJob.FormattingEnabled = true;
+            this.comboBoxJob.Items.AddRange(new object[] {
+            "Regular Employee",
+            "Service Desk Employee"});
+            this.comboBoxJob.Location = new System.Drawing.Point(171, 141);
+            this.comboBoxJob.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxJob.Name = "comboBoxJob";
+            this.comboBoxJob.Size = new System.Drawing.Size(233, 24);
+            this.comboBoxJob.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(69, 200);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 17);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Password";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(17, 144);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(127, 17);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "What kind of user?";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(65, 39);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 17);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Username";
             // 
             // ServiceDesk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pnlUserCreation);
             this.Controls.Add(this.pnlIncidentManagement);
             this.Controls.Add(this.pnlTicketCreation);
             this.Controls.Add(this.pnlUserManagement);
@@ -448,6 +595,8 @@ namespace Garden_Group
             this.menuStrip2.PerformLayout();
             this.pnlTicketCreation.ResumeLayout(false);
             this.pnlTicketCreation.PerformLayout();
+            this.pnlUserCreation.ResumeLayout(false);
+            this.pnlUserCreation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,5 +642,18 @@ namespace Garden_Group
         private System.Windows.Forms.ColumnHeader userFirstName;
         private System.Windows.Forms.ColumnHeader userJob;
         private System.Windows.Forms.ColumnHeader ticketsOpen;
+        private System.Windows.Forms.Button btnCreateUser;
+        private System.Windows.Forms.Panel pnlUserCreation;
+        private System.Windows.Forms.Button btnUserDelete;
+        private System.Windows.Forms.Button btnUserUpdate;
+        private System.Windows.Forms.Button btnUserCreate;
+        private System.Windows.Forms.ComboBox comboBoxJob;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label label5;
     }
 }

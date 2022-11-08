@@ -50,6 +50,18 @@ namespace GardenDAL
             var documents = collectionOfTickets.Find(filter);
         }*/
 
+        public int GetUserTicketCount(User user)
+        {
+            int count = (int)collectionOfTickets.Aggregate()
+                .Match(x => x.employeeId == user.GetEmployeeId())
+                .Count()
+                .FirstOrDefault()
+                .Count;
+
+            return count;
+                
+        }
+
         public void CreateTicket(Ticket ticket)
         {
             collectionOfTickets.InsertOne(ticket);
