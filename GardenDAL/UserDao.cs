@@ -24,7 +24,7 @@ namespace GardenDAL
         }
         public User GetUserByObjectId(ObjectId objectId)
         {
-            User user = collectionOfUsers.Find(x => x.GetObjectId() == objectId).FirstOrDefault();
+            User user = collectionOfUsers.Find(x => x.objectId == objectId).FirstOrDefault();
             return user;
         }
 
@@ -41,6 +41,20 @@ namespace GardenDAL
             return null;
         }
 
+        public void CreateUser(User user)
+        {
+            collectionOfUsers.InsertOne(user);
+        }
 
+        public void DeleteUser(ObjectId tempObjectId)
+        {
+            collectionOfUsers.DeleteOne(s => s.objectId == tempObjectId);
+        }
+
+        public void UpdateUser(ObjectId objectId, User user)
+        {
+            var updateDef = Builders<User>.Update.Set("name", user.GetName()).Set("password", user.GetPassword()).Set("job", user.GetJob()).Set("employeeId", user.GetEmployeeId());
+            collectionOfUsers.UpdateOne(s => s.objectId == objectId, updateDef);
+        }
     }
 }

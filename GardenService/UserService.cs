@@ -22,10 +22,24 @@ namespace GardenService
         {
             return userDao.VerifyLogin(username, password);
         }
-        public User GetUserById(ObjectId objectId)
+        public User GetUserByObjectId(ObjectId objectId)
         {
             return userDao.GetUserByObjectId(objectId);
         }
 
+        public void CreateUser(User user)
+        {
+            userDao.CreateUser(user);
+        }
+
+        public void UpdateUser(ObjectId objectId, User user)
+        {
+            userDao.UpdateUser(objectId, user);
+        }
+
+        public void DeleteUser(ObjectId objectId)
+        {
+            userDao.DeleteUser(objectId);
+        }
     }
 }

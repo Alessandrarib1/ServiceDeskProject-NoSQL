@@ -13,19 +13,24 @@ using MongoDB.Bson;
 
 namespace Garden_Group
 {
-    public partial class ServiceDesk : Form
+    public partial class ServiceDesk : Form // IDEC
     {
         public TicketService ticketService = new TicketService();
+        public UserService userService = new UserService();
+
         List<Ticket> tickets;
+        List<User> users;
+
         Ticket tempTicket;
-        int userId;
+        User tempUser;
+        User currentUser;
 
         Ticket ticketToTransfer;
 
-        public ServiceDesk(int employeeId)
+        public ServiceDesk(User currentUser)
         {
             InitializeComponent();
-            userId = employeeId;
+            this.currentUser = currentUser;
 
             ShowPanel(pnlIncidentManagement);
         }
@@ -40,6 +45,7 @@ namespace Garden_Group
                 pnlIncidentManagement.Hide();
                 pnlUserManagement.Hide();
                 pnlTicketCreation.Hide();
+                pnlUserCreation.Hide();
                 
                 pnlDashboard.Show();
                 pnlDashboard.Dock = DockStyle.Fill;
@@ -49,6 +55,7 @@ namespace Garden_Group
                 pnlDashboard.Hide();
                 pnlUserManagement.Hide();
                 pnlTicketCreation.Hide();
+                pnlUserCreation.Hide();
                 
                 pnlIncidentManagement.Show();
                 pnlIncidentManagement.Dock = DockStyle.Fill;
@@ -61,18 +68,32 @@ namespace Garden_Group
                 pnlDashboard.Hide();
                 pnlIncidentManagement.Hide();
                 pnlTicketCreation.Hide();
+                pnlUserCreation.Hide();
                 
                 pnlUserManagement.Show();
                 pnlUserManagement.Dock = DockStyle.Fill;
+
+                DisplayAllUsers();
             }
             else if (panel == pnlTicketCreation)
             {
                 pnlDashboard.Hide();
                 pnlIncidentManagement.Hide();
                 pnlUserManagement.Hide();
+                pnlUserCreation.Hide();
                 
                 pnlTicketCreation.Show();
                 pnlTicketCreation.Dock = DockStyle.Fill;
+            }
+            else if (panel == pnlUserCreation)
+            {
+                pnlDashboard.Hide();
+                pnlIncidentManagement.Hide();
+                pnlUserManagement.Hide();
+                pnlTicketCreation.Hide();
+
+                pnlUserCreation.Show();
+                pnlUserCreation.Dock = DockStyle.Fill;
             }
             
             /* i had a lovely little code of
@@ -164,6 +185,7 @@ namespace Garden_Group
             DisplayTicketsWithStatus(Status.Unresolved);
         }
 
+        //CODE BELOW IS LEGACY; DONT TAKE OUT JUST YET
         /*private void listViewTickets_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -183,7 +205,7 @@ namespace Garden_Group
             {
                 ObjectId tempObjId = ObjectId.Parse(listViewTickets.SelectedItems[0].Text);
                 tempTicket = ticketService.GetTicket(tempObjId);
-                AutoFillFields(tempTicket);
+                AutoFillTicketCreationFields(tempTicket);
                 ShowPanel(pnlTicketCreation);
             }
         }
@@ -191,22 +213,63 @@ namespace Garden_Group
 
         //USER MANAGEMENT PANEL
 
+        private void toolStripUserManagement_Click(object sender, EventArgs e)
+        {
+            ShowPanel(pnlUserManagement);
+        }
+
+        private void DisplayUsers()
+        {
+            try
+            {
+                listViewUsers.Clear();
+                listViewUsers.View = View.Details;
+                listViewUsers.FullRowSelect = true;
+
+                listViewUsers.Columns.Add("Object Id", 50);
+                listViewUsers.Columns.Add("User Id", 50);
+                listViewUsers.Columns.Add("Username", 100);
+                listViewUsers.Columns.Add("Name", 120);
+                listViewUsers.Columns.Add("Job", 150);
+                listViewUsers.Columns.Add("Tickets");
+
+                foreach (User u in users)
+                {
+                    ListViewItem ti = new ListViewItem(u.GetObjectId().ToString());
+                    ti.SubItems.Add(u.GetEmployeeId().ToString());
+                    ti.SubItems.Add(u.GetUsername());
+                    ti.SubItems.Add(u.GetName());
+                    ti.SubItems.Add(u.GetJob().ToString());
+                    ti.SubItems.Add(ticketService.GetTicketsOfUser(u).ToString());
+
+                    listViewUsers.Items.Add(ti);
+                }
+            }
+            catch (Exception e) { Console.WriteLine(e.Message); }
+        }
+
+        public void DisplayAllUsers()
+        {
+            users = userService.GetUsers();
+            DisplayUsers();
+        }
+
 
         //TICKET CREATION PANEL
 
-        private void toolStripTicketCreation_Click(object sender, EventArgs e)
+        private void btnCreateTicket_Click(object sender, EventArgs e)
         {
             ShowPanel(pnlTicketCreation);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (CheckFields())
+            if (CheckTicketCreationFields())
             {
-                Ticket ticket = new Ticket(userId, (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
+                Ticket ticket = new Ticket(currentUser.GetEmployeeId(), (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
                 ticketService.CreateTicket(ticket);
                 MessageBox.Show("Ticket has been created!");
-                EmptyFields();
+                EmptyTicketCreationFields();
             }
             else
                 MessageBox.Show("Please fill in all fields");
@@ -215,12 +278,12 @@ namespace Garden_Group
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (tempTicket != null && CheckFields())
+            if (tempTicket != null && CheckTicketCreationFields())
             {
-                Ticket ticket = new Ticket(userId, (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
+                Ticket ticket = new Ticket(currentUser.GetEmployeeId(), (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
                 ticketService.UpdateTicket(tempTicket.objectId, ticket);
                 MessageBox.Show("Ticket has been updated!");
-                EmptyFields();
+                EmptyTicketCreationFields();
             }
             else
                 MessageBox.Show("No ticket to update!");
@@ -233,14 +296,14 @@ namespace Garden_Group
             {
                 ticketService.DeleteTicket(tempTicket.objectId);
                 MessageBox.Show("Ticket has been deleted!");
-                EmptyFields();
+                EmptyTicketCreationFields();
             }
             else
                 MessageBox.Show("No ticket to delete");
            
         }
 
-        public void EmptyFields()
+        public void EmptyTicketCreationFields()
         {
             comboBoxCategory.Text = String.Empty;
             comboBoxStatus.Text = String.Empty;
@@ -248,7 +311,7 @@ namespace Garden_Group
             txtDescription.Text = String.Empty;
         }
 
-        public bool CheckFields()
+        public bool CheckTicketCreationFields()
         {
             //if (comboBoxCategory.Text.Length != 0 && comboBoxStatus.Text.Length != 0 && comboBoxPriority.Text.Length != 0 && txtDescription.Text.Length != 0)
             if (comboBoxCategory.Text != String.Empty && comboBoxStatus.Text != String.Empty && comboBoxPriority.Text != String.Empty && txtDescription.Text != String.Empty)
@@ -256,7 +319,7 @@ namespace Garden_Group
             return false;
         }
 
-        public void AutoFillFields(Ticket ticket)
+        public void AutoFillTicketCreationFields(Ticket ticket)
         {
                 comboBoxCategory.Text = ticket.ticketCategory.ToString();
                 comboBoxStatus.Text = ticket.ticketStatus.ToString();
@@ -289,6 +352,92 @@ namespace Garden_Group
             {
 
             }
+        }
+
+        //USER CREATION PANEL
+
+        private void btnCreateUser_Click(object sender, EventArgs e)
+        {
+            ShowPanel(pnlUserCreation);
+        }
+
+        /*private void listViewUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }*/
+
+        private void listViewUsers_DoubleClick(object sender, EventArgs e)
+        {
+            if (listViewUsers.SelectedItems.Count == 1)
+            {
+                ObjectId tempObjId = ObjectId.Parse(listViewUsers.SelectedItems[0].Text);
+                tempUser = userService.GetUserByObjectId(tempObjId);
+
+                AutoFillUserCreationFields(tempUser);
+                ShowPanel(pnlUserCreation);
+            }
+        }
+
+        private void AutoFillUserCreationFields(User user)
+        {
+            txtUsername.Text = user.GetUsername();
+            txtName.Text = user.GetName();
+            comboBoxJob.Text = user.GetJob().ToString();
+            txtPassword.Text = user.GetPassword();
+        }
+
+        private void EmptyUserCreationFields()
+        {
+            txtUsername.Text = String.Empty;
+            txtName.Text = String.Empty;
+            comboBoxJob.Text = String.Empty;
+            txtPassword.Text = String.Empty;
+        }
+
+        private bool CheckUserCreationFields()
+        {
+            if (txtUsername.Text != String.Empty && txtName.Text != String.Empty && comboBoxJob.Text != String.Empty && txtPassword.Text != String.Empty)
+                return true;
+            return false;
+        }
+
+        private void btnUserCreate_Click(object sender, EventArgs e)
+        {
+            if (CheckUserCreationFields())
+            {
+                int newUserId = users[users.Count - 1].GetEmployeeId() + 1;
+                User user = new User(txtUsername.Text, txtName.Text, txtPassword.Text, newUserId, (Job)Enum.Parse(typeof(Job), comboBoxJob.Text.Replace(" ", String.Empty)));
+                userService.CreateUser(user);
+                MessageBox.Show("User has been created!");
+                EmptyUserCreationFields();
+            }
+            else
+                MessageBox.Show("Please fill in all the fileds");
+        }
+
+        private void btnUserUpdate_Click(object sender, EventArgs e)
+        {
+            if (tempUser != null && CheckUserCreationFields())
+            {
+                User user = new User(txtUsername.Text, txtName.Text, txtPassword.Text, tempUser.GetEmployeeId(), (Job)Enum.Parse(typeof(Job), comboBoxJob.Text.Replace(" ", String.Empty)));
+                userService.UpdateUser(tempUser.objectId, user);
+                MessageBox.Show("User has been updated!");
+                EmptyUserCreationFields();
+            }
+            else
+                MessageBox.Show("No ticket to update!");
+        }
+
+        private void btnUserDelete_Click(object sender, EventArgs e)
+        {
+            if (tempTicket != null)
+            {
+                userService.DeleteUser(tempUser.objectId);
+                MessageBox.Show("User has been deleted!");
+                EmptyUserCreationFields();
+            }
+            else
+                MessageBox.Show("No ticket to delete");
         }
     }
 }
