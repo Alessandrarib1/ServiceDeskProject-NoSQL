@@ -510,6 +510,7 @@ namespace Garden_Group
             this.btnUserDelete.TabIndex = 10;
             this.btnUserDelete.Text = "Delete";
             this.btnUserDelete.UseVisualStyleBackColor = true;
+            this.btnUserDelete.Click += new System.EventHandler(this.btnUserDelete_Click);
             // 
             // btnUserUpdate
             // 
@@ -520,6 +521,7 @@ namespace Garden_Group
             this.btnUserUpdate.TabIndex = 9;
             this.btnUserUpdate.Text = "Update";
             this.btnUserUpdate.UseVisualStyleBackColor = true;
+            this.btnUserUpdate.Click += new System.EventHandler(this.btnUserUpdate_Click);
             // 
             // btnUserCreate
             // 

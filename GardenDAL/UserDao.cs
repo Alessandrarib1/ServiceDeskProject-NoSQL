@@ -48,13 +48,13 @@ namespace GardenDAL
 
         public void DeleteUser(ObjectId tempObjectId)
         {
-            collectionOfUsers.DeleteOne(s => s.GetObjectId() == tempObjectId);
+            collectionOfUsers.DeleteOne(s => s.objectId == tempObjectId);
         }
 
         public void UpdateUser(ObjectId objectId, User user)
         {
             var updateDef = Builders<User>.Update.Set("name", user.GetName()).Set("password", user.GetPassword()).Set("job", user.GetJob()).Set("employeeId", user.GetEmployeeId());
-            collectionOfUsers.UpdateOne(s => s.GetObjectId() == objectId, updateDef);
+            collectionOfUsers.UpdateOne(s => s.objectId == objectId, updateDef);
         }
     }
 }

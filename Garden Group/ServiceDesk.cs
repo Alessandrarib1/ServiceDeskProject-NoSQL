@@ -414,5 +414,30 @@ namespace Garden_Group
             else
                 MessageBox.Show("Please fill in all the fileds");
         }
+
+        private void btnUserUpdate_Click(object sender, EventArgs e)
+        {
+            if (tempUser != null && CheckUserCreationFields())
+            {
+                User user = new User(txtUsername.Text, txtName.Text, txtPassword.Text, tempUser.GetEmployeeId(), (Job)Enum.Parse(typeof(Job), comboBoxJob.Text.Replace(" ", String.Empty)));
+                userService.UpdateUser(tempUser.objectId, user);
+                MessageBox.Show("User has been updated!");
+                EmptyUserCreationFields();
+            }
+            else
+                MessageBox.Show("No ticket to update!");
+        }
+
+        private void btnUserDelete_Click(object sender, EventArgs e)
+        {
+            if (tempTicket != null)
+            {
+                userService.DeleteUser(tempUser.objectId);
+                MessageBox.Show("User has been deleted!");
+                EmptyUserCreationFields();
+            }
+            else
+                MessageBox.Show("No ticket to delete");
+        }
     }
 }
