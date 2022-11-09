@@ -12,14 +12,14 @@ namespace GardenService
     {
         private byte[] saltBytes;
         private RNGCryptoServiceProvider provider;
-        public string RandomPasswordGenrator()
+        public static string RandomPasswordGenrator()
         {
             //Store the password generated into a string variable
             //The password will have a length of 8 characters and 3 non alphanumeric characters
             return Membership.GeneratePassword(8, 3);
         }
         // Making Dictionary so that it can be returned and salt and Hashed password can be differntiated
-        public Dictionary<string, string> GenerateSaltedHash(string password)
+        public static Dictionary<string, string> GenerateSaltedHash(string password)
         {
             Dictionary<string, string> hashedPassword = new Dictionary<string, string>();
             byte[] saltBytes = new byte[32];

@@ -20,7 +20,15 @@ namespace GardenService
 
         public User ValidateLogin(String username, String password)
         {
-            return userDao.VerifyLogin(username, password);
+            List<User> users = GetUsers();
+            foreach (User user in users)
+            {
+                if (user.GetUsername() == username && HashPassword.ComparingPasswordToHash(password, user.GetSalt(), user.GetPassword()))
+                {
+                    return user;
+                }
+            }
+            return null;
         }
         public User GetUserByObjectId(ObjectId objectId)
         {

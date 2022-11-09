@@ -53,7 +53,7 @@ namespace GardenDAL
 
         public void UpdateUser(ObjectId objectId, User user)
         {
-            var updateDef = Builders<User>.Update.Set("name", user.GetName()).Set("password", user.GetPassword()).Set("job", user.GetJob()).Set("employeeId", user.GetEmployeeId());
+            var updateDef = Builders<User>.Update.Set("name", user.GetFirstName()).Set("password", user.GetPassword()).Set("job", user.GetJob()).Set("employeeId", user.GetEmployeeId());
             collectionOfUsers.UpdateOne(s => s.objectId == objectId, updateDef);
         }
     }
