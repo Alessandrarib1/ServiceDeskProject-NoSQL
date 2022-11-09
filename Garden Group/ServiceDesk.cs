@@ -27,9 +27,11 @@ namespace Garden_Group
 
         Ticket ticketToTransfer;
 
+       
         public ServiceDesk(User currentUser)
         {
             InitializeComponent();
+            comboBoxLocation.DataSource = Enum.GetValues(typeof(Location));
             this.currentUser = currentUser;
 
             ShowPanel(pnlIncidentManagement);
@@ -238,7 +240,7 @@ namespace Garden_Group
                     ListViewItem ti = new ListViewItem(u.GetObjectId().ToString());
                     ti.SubItems.Add(u.GetEmployeeId().ToString());
                     ti.SubItems.Add(u.GetUsername());
-                    ti.SubItems.Add(u.GetName());
+                    ti.SubItems.Add(u.GetFirstName());
                     ti.SubItems.Add(u.GetJob().ToString());
                     ti.SubItems.Add(ticketService.GetTicketsOfUser(u).ToString());
 
@@ -381,9 +383,9 @@ namespace Garden_Group
         private void AutoFillUserCreationFields(User user)
         {
             txtUsername.Text = user.GetUsername();
-            txtName.Text = user.GetName();
+            txtName.Text = user.GetFirstName();
             comboBoxJob.Text = user.GetJob().ToString();
-            txtPassword.Text = user.GetPassword();
+            //txtPassword.Text = user.GetPassword();
         }
 
         private void EmptyUserCreationFields()
@@ -391,12 +393,21 @@ namespace Garden_Group
             txtUsername.Text = String.Empty;
             txtName.Text = String.Empty;
             comboBoxJob.Text = String.Empty;
-            txtPassword.Text = String.Empty;
+            TextBoxLastName.Text = String.Empty;
+            TextBoxEmail.Text = String.Empty;
+            comboBoxLocation.Text = String.Empty;
+            textBoxConfirmPassword.Text = String.Empty;
+            textBoxPassword.Text = String.Empty;
+            radioButtonCreateMyOwnPassword.Checked = false;
+            radioButtonGeneratePassword.Checked = false;
+
+
+            //txtPassword.Text = String.Empty;
         }
 
         private bool CheckUserCreationFields()
         {
-            if (txtUsername.Text != String.Empty && txtName.Text != String.Empty && comboBoxJob.Text != String.Empty && txtPassword.Text != String.Empty)
+            if (txtUsername.Text != String.Empty && txtName.Text != String.Empty && comboBoxJob.Text != String.Empty && TextBoxEmail.Text != String.Empty && comboBoxLocation.Text != String.Empty && TextBoxLastName.Text != String.Empty && radioButtonGeneratePassword.Checked == true || radioButtonCreateMyOwnPassword.Checked == true)
                 return true;
             return false;
         }
@@ -405,28 +416,38 @@ namespace Garden_Group
         {
             if (CheckUserCreationFields())
             {
-                int newUserId = users[users.Count - 1].GetEmployeeId() + 1;
-                User user = new User(txtUsername.Text, txtName.Text, txtPassword.Text, newUserId, (Job)Enum.Parse(typeof(Job), comboBoxJob.Text.Replace(" ", String.Empty)));
+                string password = "";
+                int newUserId = users[users.Count -1].GetEmployeeId() +1;
+                if (radioButtonCreateMyOwnPassword.Checked && textBoxPassword.Text != string.Empty && textBoxPassword.Text.Equals(textBoxConfirmPassword))
+                {
+                    password = textBoxPassword.Text;
+                }
+                else if (radioButtonGeneratePassword.Checked)
+                { password = HashPassword.RandomPasswordGenrator(); }
+                Dictionary<string, string> hashAndSaltPassword = HashPassword.GenerateSaltedHash(password);
+                EmailGenerator.SendLoginDetails(txtName.Text, TextBoxEmail.Text, txtUsername.Text, password);
+                Location location = (Location)comboBoxLocation.SelectedItem;
+                User user = new User(txtUsername.Text, txtName.Text, TextBoxLastName.Text, TextBoxEmail.Text, location, hashAndSaltPassword["HashedPassword"], hashAndSaltPassword["Salt"], newUserId, (Job)Enum.Parse(typeof(Job), comboBoxJob.Text.Replace(" ", String.Empty))); ;
                 userService.CreateUser(user);
                 MessageBox.Show("User has been created!");
                 EmptyUserCreationFields();
             }
             else
-                MessageBox.Show("Please fill in all the fileds");
+                MessageBox.Show("Please fill in all the fileds and chose one of the radio buttons option");
         }
 
-        private void btnUserUpdate_Click(object sender, EventArgs e)
+       /* private void btnUserUpdate_Click(object sender, EventArgs e)
         {
             if (tempUser != null && CheckUserCreationFields())
             {
-                User user = new User(txtUsername.Text, txtName.Text, txtPassword.Text, tempUser.GetEmployeeId(), (Job)Enum.Parse(typeof(Job), comboBoxJob.Text.Replace(" ", String.Empty)));
+                User user = new User(txtUsername.Text, txtName.Text, tempUser.GetEmployeeId(), (Job)Enum.Parse(typeof(Job), comboBoxJob.Text.Replace(" ", String.Empty)));
                 userService.UpdateUser(tempUser.objectId, user);
                 MessageBox.Show("User has been updated!");
                 EmptyUserCreationFields();
             }
             else
                 MessageBox.Show("No ticket to update!");
-        }
+        }*/
 
         private void btnUserDelete_Click(object sender, EventArgs e)
         {
@@ -438,6 +459,19 @@ namespace Garden_Group
             }
             else
                 MessageBox.Show("No ticket to delete");
+        }
+
+        private void radioButtonCreateMyOwnPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxPassword.Enabled = true;
+            textBoxConfirmPassword.Enabled = true;
+        }
+
+        private void radioButtonGeneratePassword_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxPassword.Enabled = false;
+            textBoxConfirmPassword.Enabled = false;
+
         }
     }
 }

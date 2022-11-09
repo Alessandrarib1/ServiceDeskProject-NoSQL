@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -10,8 +11,14 @@ namespace GardenModel
 {
     public class User
     {
-        [BsonElement("name")]
-        private string name { get; set; }
+        [BsonElement("firstname")]
+        private string firstname { get; set; }
+        [BsonElement("lastname")]
+        private string lastname { get; set; }
+        [BsonElement("email")]
+        private string email { get; set; }
+        [BsonElement("location")]
+        private Location location { get; set; }
 
         [BsonId]
         public ObjectId objectId { get; set; }
@@ -31,17 +38,17 @@ namespace GardenModel
         [BsonElement("salt")]
         private string salt;
 
-
-
-
-        public User(string username, string name, string password, int employeeId, Job job) //string salt
+        public User(string username, string firstname, string lastname, string email, Location location, string password, string salt,  int employeeId, Job job) 
         {
             this.username = username;
-            this.name = name;
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.location = location;
+            this.email = email;
             this.password = password;
             this.employeeId = employeeId;
-            this.job = (Job)job;
-            //this.salt = salt;
+            this.job = job;
+            this.salt = salt;
 
         }
 
@@ -71,9 +78,26 @@ namespace GardenModel
         {
             return password;
         }
-        public string GetName()
+        public string GetFirstName()
         {
-            return name;
+            return firstname;
         }
+        public string GetLaststName()
+        {
+            return lastname;
+        }
+        public string GetEmail()
+        {
+            return email;
+        }
+        public Location GetLocation()
+        {
+            return location;
+        }
+        public string GetSalt()
+        {
+            return salt;
+        }
+       
     }
 }
