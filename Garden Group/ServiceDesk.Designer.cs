@@ -494,10 +494,10 @@ namespace Garden_Group
             this.pnlUserCreation.Controls.Add(this.label6);
             this.pnlUserCreation.Controls.Add(this.label7);
             this.pnlUserCreation.Controls.Add(this.label8);
-            this.pnlUserCreation.Location = new System.Drawing.Point(793, 297);
+            this.pnlUserCreation.Location = new System.Drawing.Point(12, 32);
             this.pnlUserCreation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlUserCreation.Name = "pnlUserCreation";
-            this.pnlUserCreation.Size = new System.Drawing.Size(79, 46);
+            this.pnlUserCreation.Size = new System.Drawing.Size(775, 396);
             this.pnlUserCreation.TabIndex = 11;
             // 
             // label5
@@ -550,7 +550,6 @@ namespace Garden_Group
             this.btnUserUpdate.TabIndex = 9;
             this.btnUserUpdate.Text = "Update";
             this.btnUserUpdate.UseVisualStyleBackColor = true;
-            this.btnUserUpdate.Click += new System.EventHandler(this.btnUserUpdate_Click);
             // 
             // btnUserCreate
             // 
@@ -606,10 +605,10 @@ namespace Garden_Group
             // 
             this.pnlReportManagement.Controls.Add(this.btnDeleteReport);
             this.pnlReportManagement.Controls.Add(this.listViewReports);
-            this.pnlReportManagement.Location = new System.Drawing.Point(12, 32);
+            this.pnlReportManagement.Location = new System.Drawing.Point(793, 382);
             this.pnlReportManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlReportManagement.Name = "pnlReportManagement";
-            this.pnlReportManagement.Size = new System.Drawing.Size(776, 415);
+            this.pnlReportManagement.Size = new System.Drawing.Size(77, 46);
             this.pnlReportManagement.TabIndex = 5;
             // 
             // btnDeleteReport
