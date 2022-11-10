@@ -17,9 +17,12 @@ namespace Garden_Group
     {
         public TicketService ticketService = new TicketService();
         public UserService userService = new UserService();
+        public ReportService reportService = new ReportService();
+        public ArchiveService archiveService = new ArchiveService();
 
         List<Ticket> tickets;
         List<User> users;
+        List<Report> reports;
 
         Ticket tempTicket;
         User tempUser;
@@ -46,6 +49,7 @@ namespace Garden_Group
                 pnlUserManagement.Hide();
                 pnlTicketCreation.Hide();
                 pnlUserCreation.Hide();
+                pnlReportManagement.Hide();
                 
                 pnlDashboard.Show();
                 pnlDashboard.Dock = DockStyle.Fill;
@@ -56,6 +60,7 @@ namespace Garden_Group
                 pnlUserManagement.Hide();
                 pnlTicketCreation.Hide();
                 pnlUserCreation.Hide();
+                pnlReportManagement.Hide();
                 
                 pnlIncidentManagement.Show();
                 pnlIncidentManagement.Dock = DockStyle.Fill;
@@ -69,6 +74,7 @@ namespace Garden_Group
                 pnlIncidentManagement.Hide();
                 pnlTicketCreation.Hide();
                 pnlUserCreation.Hide();
+                pnlReportManagement.Hide();
                 
                 pnlUserManagement.Show();
                 pnlUserManagement.Dock = DockStyle.Fill;
@@ -81,6 +87,7 @@ namespace Garden_Group
                 pnlIncidentManagement.Hide();
                 pnlUserManagement.Hide();
                 pnlUserCreation.Hide();
+                pnlReportManagement.Hide();
                 
                 pnlTicketCreation.Show();
                 pnlTicketCreation.Dock = DockStyle.Fill;
@@ -91,9 +98,22 @@ namespace Garden_Group
                 pnlIncidentManagement.Hide();
                 pnlUserManagement.Hide();
                 pnlTicketCreation.Hide();
+                pnlReportManagement.Hide();
 
                 pnlUserCreation.Show();
                 pnlUserCreation.Dock = DockStyle.Fill;
+            }
+            else if (panel == pnlReportManagement)
+            {
+                pnlDashboard.Hide();
+                pnlIncidentManagement.Hide();
+                pnlUserManagement.Hide();
+                pnlTicketCreation.Hide();
+                pnlUserCreation.Hide();
+
+                pnlReportManagement.Show();
+                pnlReportManagement.Dock = DockStyle.Fill;
+                DisplayAllReports();
             }
             
             /* i had a lovely little code of
@@ -105,6 +125,68 @@ namespace Garden_Group
              * 
              * but then each panel has to display different stuff so it would not work
             */
+        }
+
+        //REPORT MANAGEMENT PANEL
+
+        private void toolStripReportManagement_Click(object sender, EventArgs e)
+        {
+            ShowPanel(pnlReportManagement);
+        }
+
+        private void DisplayReports()
+        {
+            try
+            {
+                listViewReports.Clear();
+                listViewReports.View = View.Details;
+                listViewReports.FullRowSelect = true;
+
+                listViewReports.Columns.Add("Object Id", 50);
+                listViewReports.Columns.Add("Employee Id", 50);
+                listViewReports.Columns.Add("Description", 400);
+                
+
+                foreach (Report r in reports)
+                {
+                    ListViewItem ti = new ListViewItem(r.objectId.ToString());
+                    ti.SubItems.Add(r.employeeId.ToString());
+                    ti.SubItems.Add(r.description.ToString());
+
+                    listViewReports.Items.Add(ti);
+                }
+            }
+            catch (Exception e) { Console.WriteLine(e.Message); }
+        }
+
+        private void DisplayAllReports()
+        {
+            reports = reportService.GetAllReports();
+            DisplayReports();
+        }
+
+
+        private void listViewReports_DoubleClick(object sender, EventArgs e)
+        {
+            if (listViewReports.SelectedItems.Count == 1)
+            {
+                Report tempReport = reportService.GetReportById(ObjectId.Parse(listViewReports.SelectedItems[0].Text));
+                FillTicketCreationFieldsReport(tempReport);
+                ShowPanel(pnlTicketCreation);
+            }
+        }
+
+        private void btnDeleteReport_Click(object sender, EventArgs e)
+        {
+            if (listViewReports.SelectedItems != null)
+            {
+                ObjectId tempObjId = ObjectId.Parse(listViewReports.SelectedItems[0].Text);
+                Report tempReport = reportService.GetReportById(tempObjId);
+                reportService.DeleteReport(tempReport);
+
+                MessageBox.Show("Report has been deleted!");
+                DisplayAllReports();
+            }
         }
 
 
@@ -210,6 +292,22 @@ namespace Garden_Group
             }
         }
 
+        private void btnArchive_Click(object sender, EventArgs e)
+        {
+            foreach (Ticket t in tickets)
+            {
+                TimeSpan ts = DateTime.Now.Date - t.date;
+                int timePassed = ts.Days;
+                if (timePassed > 730)
+                {
+                    archiveService.AddArchive(t);
+                    ticketService.DeleteTicket(t.objectId);
+                    DisplayTicketsByPriority();
+                }
+            }
+            MessageBox.Show("Archived any tickets older than 2 years old");
+        }
+
 
         //USER MANAGEMENT PANEL
 
@@ -240,7 +338,7 @@ namespace Garden_Group
                     ti.SubItems.Add(u.GetUsername());
                     ti.SubItems.Add(u.GetName());
                     ti.SubItems.Add(u.GetJob().ToString());
-                    ti.SubItems.Add(ticketService.GetTicketsOfUser(u).ToString());
+                    ti.SubItems.Add(ticketService.GetUserTicketCount(u).ToString());
 
                     listViewUsers.Items.Add(ti);
                 }
@@ -248,7 +346,7 @@ namespace Garden_Group
             catch (Exception e) { Console.WriteLine(e.Message); }
         }
 
-        public void DisplayAllUsers()
+        private void DisplayAllUsers()
         {
             users = userService.GetUsers();
             DisplayUsers();
@@ -266,7 +364,7 @@ namespace Garden_Group
         {
             if (CheckTicketCreationFields())
             {
-                Ticket ticket = new Ticket(currentUser.GetEmployeeId(), (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
+                Ticket ticket = new Ticket(currentUser.GetEmployeeId(), (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text, DateTime.Now);
                 ticketService.CreateTicket(ticket);
                 MessageBox.Show("Ticket has been created!");
                 EmptyTicketCreationFields();
@@ -280,7 +378,7 @@ namespace Garden_Group
         {
             if (tempTicket != null && CheckTicketCreationFields())
             {
-                Ticket ticket = new Ticket(currentUser.GetEmployeeId(), (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text);
+                Ticket ticket = new Ticket(currentUser.GetEmployeeId(), (int)Enum.Parse(typeof(Category), comboBoxCategory.Text), (int)Enum.Parse(typeof(Status), comboBoxStatus.Text), (int)Enum.Parse(typeof(Priority), comboBoxPriority.Text), txtDescription.Text, tempTicket.date);
                 ticketService.UpdateTicket(tempTicket.objectId, ticket);
                 MessageBox.Show("Ticket has been updated!");
                 EmptyTicketCreationFields();
@@ -303,7 +401,7 @@ namespace Garden_Group
            
         }
 
-        public void EmptyTicketCreationFields()
+        private void EmptyTicketCreationFields()
         {
             comboBoxCategory.Text = String.Empty;
             comboBoxStatus.Text = String.Empty;
@@ -311,7 +409,7 @@ namespace Garden_Group
             txtDescription.Text = String.Empty;
         }
 
-        public bool CheckTicketCreationFields()
+        private bool CheckTicketCreationFields()
         {
             //if (comboBoxCategory.Text.Length != 0 && comboBoxStatus.Text.Length != 0 && comboBoxPriority.Text.Length != 0 && txtDescription.Text.Length != 0)
             if (comboBoxCategory.Text != String.Empty && comboBoxStatus.Text != String.Empty && comboBoxPriority.Text != String.Empty && txtDescription.Text != String.Empty)
@@ -319,12 +417,17 @@ namespace Garden_Group
             return false;
         }
 
-        public void AutoFillTicketCreationFields(Ticket ticket)
+        private void AutoFillTicketCreationFields(Ticket ticket)
         {
                 comboBoxCategory.Text = ticket.ticketCategory.ToString();
                 comboBoxStatus.Text = ticket.ticketStatus.ToString();
                 comboBoxPriority.Text = ticket.ticketPriority.ToString();
                 txtDescription.Text = ticket.description;
+        }
+
+        private void FillTicketCreationFieldsReport(Report report)
+        {
+            txtDescription.Text = report.description;
         }
 
         private void listViewTickets_SelectedIndexChanged(object sender, EventArgs e)

@@ -28,15 +28,18 @@ namespace GardenModel
         [BsonElement ("description")]
         public string description { get; set; }
 
+        [BsonElement ("date")]
+        public DateTime date { get; set; }
 
-        public Ticket (int employeeId, int category, int status, int priority, string description)
+
+        public Ticket (int employeeId, int category, int status, int priority, string description, DateTime date)
         {
             this.employeeId = employeeId;
             this.ticketCategory = (Category)category;
             this.ticketStatus = (Status)status;
             this.ticketPriority = (Priority)priority;
             this.description = description;
-
+            this.date = date;
         }
     }
 }

@@ -31,6 +31,7 @@ namespace Garden_Group
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripDashboard = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripReportManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripIncidentManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripUserManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDashboard = new System.Windows.Forms.Panel();
@@ -43,6 +44,7 @@ namespace Garden_Group
             this.userJob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ticketsOpen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlIncidentManagement = new System.Windows.Forms.Panel();
+            this.btnArchive = new System.Windows.Forms.Button();
             this.btnCreateTicket = new System.Windows.Forms.Button();
             this.changeEmployeeButton = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
@@ -80,12 +82,19 @@ namespace Garden_Group
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.pnlReportManagement = new System.Windows.Forms.Panel();
+            this.btnDeleteReport = new System.Windows.Forms.Button();
+            this.listViewReports = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.pnlUserManagement.SuspendLayout();
             this.pnlIncidentManagement.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.pnlTicketCreation.SuspendLayout();
             this.pnlUserCreation.SuspendLayout();
+            this.pnlReportManagement.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -93,6 +102,7 @@ namespace Garden_Group
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDashboard,
+            this.toolStripReportManagement,
             this.toolStripIncidentManagement,
             this.toolStripUserManagement});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -107,6 +117,13 @@ namespace Garden_Group
             this.toolStripDashboard.Name = "toolStripDashboard";
             this.toolStripDashboard.Size = new System.Drawing.Size(96, 24);
             this.toolStripDashboard.Text = "Dashboard";
+            // 
+            // toolStripReportManagement
+            // 
+            this.toolStripReportManagement.Name = "toolStripReportManagement";
+            this.toolStripReportManagement.Size = new System.Drawing.Size(160, 24);
+            this.toolStripReportManagement.Text = "Report Management";
+            this.toolStripReportManagement.Click += new System.EventHandler(this.toolStripReportManagement_Click);
             // 
             // toolStripIncidentManagement
             // 
@@ -124,20 +141,20 @@ namespace Garden_Group
             // 
             // pnlDashboard
             // 
-            this.pnlDashboard.Location = new System.Drawing.Point(793, 142);
+            this.pnlDashboard.Location = new System.Drawing.Point(793, 32);
             this.pnlDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.Size = new System.Drawing.Size(99, 64);
+            this.pnlDashboard.Size = new System.Drawing.Size(101, 46);
             this.pnlDashboard.TabIndex = 1;
             // 
             // pnlUserManagement
             // 
             this.pnlUserManagement.Controls.Add(this.btnCreateUser);
             this.pnlUserManagement.Controls.Add(this.listViewUsers);
-            this.pnlUserManagement.Location = new System.Drawing.Point(793, 32);
+            this.pnlUserManagement.Location = new System.Drawing.Point(793, 218);
             this.pnlUserManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlUserManagement.Name = "pnlUserManagement";
-            this.pnlUserManagement.Size = new System.Drawing.Size(128, 81);
+            this.pnlUserManagement.Size = new System.Drawing.Size(100, 64);
             this.pnlUserManagement.TabIndex = 2;
             // 
             // btnCreateUser
@@ -195,15 +212,27 @@ namespace Garden_Group
             // 
             // pnlIncidentManagement
             // 
+            this.pnlIncidentManagement.Controls.Add(this.btnArchive);
             this.pnlIncidentManagement.Controls.Add(this.btnCreateTicket);
             this.pnlIncidentManagement.Controls.Add(this.changeEmployeeButton);
             this.pnlIncidentManagement.Controls.Add(this.menuStrip2);
             this.pnlIncidentManagement.Controls.Add(this.listViewTickets);
-            this.pnlIncidentManagement.Location = new System.Drawing.Point(793, 225);
+            this.pnlIncidentManagement.Location = new System.Drawing.Point(793, 92);
             this.pnlIncidentManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlIncidentManagement.Name = "pnlIncidentManagement";
-            this.pnlIncidentManagement.Size = new System.Drawing.Size(47, 47);
+            this.pnlIncidentManagement.Size = new System.Drawing.Size(66, 51);
             this.pnlIncidentManagement.TabIndex = 2;
+            // 
+            // btnArchive
+            // 
+            this.btnArchive.Location = new System.Drawing.Point(563, 376);
+            this.btnArchive.Margin = new System.Windows.Forms.Padding(4);
+            this.btnArchive.Name = "btnArchive";
+            this.btnArchive.Size = new System.Drawing.Size(193, 28);
+            this.btnArchive.TabIndex = 4;
+            this.btnArchive.Text = "Send tickets to archive";
+            this.btnArchive.UseVisualStyleBackColor = true;
+            this.btnArchive.Click += new System.EventHandler(this.btnArchive_Click);
             // 
             // btnCreateTicket
             // 
@@ -239,7 +268,7 @@ namespace Garden_Group
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(47, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(66, 28);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -283,7 +312,7 @@ namespace Garden_Group
             this.listViewTickets.Location = new System.Drawing.Point(19, 46);
             this.listViewTickets.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewTickets.Name = "listViewTickets";
-            this.listViewTickets.Size = new System.Drawing.Size(753, 345);
+            this.listViewTickets.Size = new System.Drawing.Size(753, 324);
             this.listViewTickets.TabIndex = 0;
             this.listViewTickets.UseCompatibleStateImageBehavior = false;
             this.listViewTickets.View = System.Windows.Forms.View.Details;
@@ -327,7 +356,7 @@ namespace Garden_Group
             this.pnlTicketCreation.Controls.Add(this.label3);
             this.pnlTicketCreation.Controls.Add(this.label2);
             this.pnlTicketCreation.Controls.Add(this.label1);
-            this.pnlTicketCreation.Location = new System.Drawing.Point(794, 354);
+            this.pnlTicketCreation.Location = new System.Drawing.Point(793, 160);
             this.pnlTicketCreation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTicketCreation.Name = "pnlTicketCreation";
             this.pnlTicketCreation.Size = new System.Drawing.Size(73, 47);
@@ -465,10 +494,10 @@ namespace Garden_Group
             this.pnlUserCreation.Controls.Add(this.label6);
             this.pnlUserCreation.Controls.Add(this.label7);
             this.pnlUserCreation.Controls.Add(this.label8);
-            this.pnlUserCreation.Location = new System.Drawing.Point(12, 32);
+            this.pnlUserCreation.Location = new System.Drawing.Point(793, 297);
             this.pnlUserCreation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlUserCreation.Name = "pnlUserCreation";
-            this.pnlUserCreation.Size = new System.Drawing.Size(776, 407);
+            this.pnlUserCreation.Size = new System.Drawing.Size(79, 46);
             this.pnlUserCreation.TabIndex = 11;
             // 
             // label5
@@ -573,11 +602,64 @@ namespace Garden_Group
             this.label8.TabIndex = 0;
             this.label8.Text = "Username";
             // 
+            // pnlReportManagement
+            // 
+            this.pnlReportManagement.Controls.Add(this.btnDeleteReport);
+            this.pnlReportManagement.Controls.Add(this.listViewReports);
+            this.pnlReportManagement.Location = new System.Drawing.Point(12, 32);
+            this.pnlReportManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlReportManagement.Name = "pnlReportManagement";
+            this.pnlReportManagement.Size = new System.Drawing.Size(776, 415);
+            this.pnlReportManagement.TabIndex = 5;
+            // 
+            // btnDeleteReport
+            // 
+            this.btnDeleteReport.Location = new System.Drawing.Point(624, 377);
+            this.btnDeleteReport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteReport.Name = "btnDeleteReport";
+            this.btnDeleteReport.Size = new System.Drawing.Size(148, 28);
+            this.btnDeleteReport.TabIndex = 4;
+            this.btnDeleteReport.Text = "Delete report";
+            this.btnDeleteReport.UseVisualStyleBackColor = true;
+            this.btnDeleteReport.Click += new System.EventHandler(this.btnDeleteReport_Click);
+            // 
+            // listViewReports
+            // 
+            this.listViewReports.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listViewReports.HideSelection = false;
+            this.listViewReports.Location = new System.Drawing.Point(29, 13);
+            this.listViewReports.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listViewReports.Name = "listViewReports";
+            this.listViewReports.Size = new System.Drawing.Size(746, 346);
+            this.listViewReports.TabIndex = 1;
+            this.listViewReports.UseCompatibleStateImageBehavior = false;
+            this.listViewReports.View = System.Windows.Forms.View.Details;
+            this.listViewReports.DoubleClick += new System.EventHandler(this.listViewReports_DoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            this.columnHeader1.Width = 79;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Username";
+            this.columnHeader2.Width = 216;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "First name";
+            this.columnHeader3.Width = 222;
+            // 
             // ServiceDesk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pnlReportManagement);
             this.Controls.Add(this.pnlUserCreation);
             this.Controls.Add(this.pnlIncidentManagement);
             this.Controls.Add(this.pnlTicketCreation);
@@ -599,6 +681,7 @@ namespace Garden_Group
             this.pnlTicketCreation.PerformLayout();
             this.pnlUserCreation.ResumeLayout(false);
             this.pnlUserCreation.PerformLayout();
+            this.pnlReportManagement.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -657,5 +740,13 @@ namespace Garden_Group
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripReportManagement;
+        private System.Windows.Forms.Panel pnlReportManagement;
+        private System.Windows.Forms.ListView listViewReports;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Button btnArchive;
+        private System.Windows.Forms.Button btnDeleteReport;
     }
 }

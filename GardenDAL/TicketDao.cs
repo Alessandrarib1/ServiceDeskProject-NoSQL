@@ -52,14 +52,18 @@ namespace GardenDAL
 
         public int GetUserTicketCount(User user)
         {
-            int count = (int)collectionOfTickets.Aggregate()
+            try
+            {
+                int count = (int)collectionOfTickets.Aggregate()
                 .Match(x => x.employeeId == user.GetEmployeeId())
                 .Count()
                 .FirstOrDefault()
                 .Count;
-
-            return count;
-                
+                return count;
+            }catch(NullReferenceException n)
+            {
+                return 0;
+            }               
         }
 
         public void CreateTicket(Ticket ticket)

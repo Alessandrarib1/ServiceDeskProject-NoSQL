@@ -58,5 +58,9 @@ namespace GardenService
             List<Ticket> sortedTickets = sortTicketDao.SortTicketByPriority(GetAllTickets()); ;
         }*/
 
+        public int GetUserTicketCount(User user)
+        {
+            return ticketDao.GetUserTicketCount(user);
+        }
     }
 }
