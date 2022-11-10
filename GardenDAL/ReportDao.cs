@@ -35,13 +35,20 @@ namespace GardenDAL
 
         public void DeleteReport(Report report)
         {
-            reportCollection.DeleteOne(s => s == report);
+            reportCollection.DeleteOne(s => s.objectId == report.objectId);
         }
 
         public void UpdateReport(Report reportToChange, Report newReport)
         {
             var updateParams = Builders<Report>.Update.Set("employeeId", newReport.employeeId).Set("description", newReport.description);
             reportCollection.UpdateOne(s => s == reportToChange, updateParams);
+        }
+
+        public Report GetReportById(ObjectId objectId) //idec
+        {
+            Report report = reportCollection.Find(x => x.objectId == objectId).FirstOrDefault();
+
+            return report;
         }
     }
 }

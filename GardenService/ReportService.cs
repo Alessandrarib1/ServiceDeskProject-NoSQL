@@ -37,5 +37,10 @@ namespace GardenService
         {
             reportDao.UpdateReport(reportToChange, newReport);
         }
+
+        public Report GetReportById(ObjectId objectId)
+        {
+           return reportDao.GetReportById(objectId);
+        }
     }
 }

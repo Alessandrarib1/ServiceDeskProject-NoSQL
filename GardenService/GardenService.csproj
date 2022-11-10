@@ -126,6 +126,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchiveService.cs" />
     <Compile Include="EmailGenerater.cs" />
     <Compile Include="HashPassword.cs" />
     <Compile Include="ReportService.cs" />

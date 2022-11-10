@@ -43,7 +43,7 @@ namespace Garden_Group
 
             User user = transferService.GetUserByUsername(employeeComboBox.Text);
 
-            ticketService.UpdateTicket(ticket.objectId, new Ticket(user.GetEmployeeId(), (int) ticket.ticketCategory, (int) ticket.ticketStatus, (int) ticket.ticketPriority, ticket.description));
+            ticketService.UpdateTicket(ticket.objectId, new Ticket(user.GetEmployeeId(), (int) ticket.ticketCategory, (int) ticket.ticketStatus, (int) ticket.ticketPriority, ticket.description, ticket.date));
             serviceDesk.DisplayTicketsByPriority();
             this.Close();
         }
