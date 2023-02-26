@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelLogin = new System.Windows.Forms.Panel();
             this.labelDisplayError = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,12 +43,28 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.panelForgotPassword = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelDisplayForgotPasswordErrors = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.textBoxForgotEmail = new System.Windows.Forms.TextBox();
+            this.textBoxForgotUsername = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.buttonGetNewPassword = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panelForgotPassword.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -59,28 +75,27 @@
             this.panel3.Size = new System.Drawing.Size(509, 406);
             this.panel3.TabIndex = 9;
             // 
-            // panel1
+            // panelLogin
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.labelDisplayError);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtBoxPassword);
-            this.panel1.Controls.Add(this.txtBoxUserName);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.LabelClearFields);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Location = new System.Drawing.Point(90, 159);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(333, 374);
-            this.panel1.TabIndex = 10;
+            this.panelLogin.BackColor = System.Drawing.Color.White;
+            this.panelLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelLogin.Controls.Add(this.labelDisplayError);
+            this.panelLogin.Controls.Add(this.pictureBox1);
+            this.panelLogin.Controls.Add(this.label2);
+            this.panelLogin.Controls.Add(this.txtBoxPassword);
+            this.panelLogin.Controls.Add(this.txtBoxUserName);
+            this.panelLogin.Controls.Add(this.label3);
+            this.panelLogin.Controls.Add(this.LabelClearFields);
+            this.panelLogin.Controls.Add(this.button1);
+            this.panelLogin.Controls.Add(this.panel2);
+            this.panelLogin.Controls.Add(this.pictureBox3);
+            this.panelLogin.Controls.Add(this.panel4);
+            this.panelLogin.Controls.Add(this.pictureBox2);
+            this.panelLogin.Location = new System.Drawing.Point(90, 159);
+            this.panelLogin.Name = "panelLogin";
+            this.panelLogin.Size = new System.Drawing.Size(333, 374);
+            this.panelLogin.TabIndex = 10;
             // 
             // labelDisplayError
             // 
@@ -115,6 +130,7 @@
             this.label2.Size = new System.Drawing.Size(129, 17);
             this.label2.TabIndex = 30;
             this.label2.Text = "Forgot Password";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtBoxPassword
             // 
@@ -165,6 +181,7 @@
             this.LabelClearFields.Size = new System.Drawing.Size(94, 17);
             this.LabelClearFields.TabIndex = 27;
             this.LabelClearFields.Text = "Clear Fields";
+            this.LabelClearFields.Click += new System.EventHandler(this.LabelClearFields_Click);
             // 
             // button1
             // 
@@ -238,14 +255,165 @@
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
-            // label1
+            // panelForgotPassword
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(138, 87);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "label1";
+            this.panelForgotPassword.BackColor = System.Drawing.Color.White;
+            this.panelForgotPassword.Controls.Add(this.label7);
+            this.panelForgotPassword.Controls.Add(this.labelDisplayForgotPasswordErrors);
+            this.panelForgotPassword.Controls.Add(this.pictureBox5);
+            this.panelForgotPassword.Controls.Add(this.textBoxForgotEmail);
+            this.panelForgotPassword.Controls.Add(this.textBoxForgotUsername);
+            this.panelForgotPassword.Controls.Add(this.label5);
+            this.panelForgotPassword.Controls.Add(this.label6);
+            this.panelForgotPassword.Controls.Add(this.buttonGetNewPassword);
+            this.panelForgotPassword.Controls.Add(this.panel5);
+            this.panelForgotPassword.Controls.Add(this.pictureBox6);
+            this.panelForgotPassword.Controls.Add(this.panel6);
+            this.panelForgotPassword.Controls.Add(this.pictureBox7);
+            this.panelForgotPassword.Location = new System.Drawing.Point(90, 163);
+            this.panelForgotPassword.Name = "panelForgotPassword";
+            this.panelForgotPassword.Size = new System.Drawing.Size(333, 374);
+            this.panelForgotPassword.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(40, 90);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(254, 17);
+            this.label7.TabIndex = 45;
+            this.label7.Text = "Please insert username and email";
+            // 
+            // labelDisplayForgotPasswordErrors
+            // 
+            this.labelDisplayForgotPasswordErrors.AutoSize = true;
+            this.labelDisplayForgotPasswordErrors.ForeColor = System.Drawing.Color.Red;
+            this.labelDisplayForgotPasswordErrors.Location = new System.Drawing.Point(40, 229);
+            this.labelDisplayForgotPasswordErrors.Name = "labelDisplayForgotPasswordErrors";
+            this.labelDisplayForgotPasswordErrors.Size = new System.Drawing.Size(46, 17);
+            this.labelDisplayForgotPasswordErrors.TabIndex = 44;
+            this.labelDisplayForgotPasswordErrors.Text = "label1";
+            this.labelDisplayForgotPasswordErrors.Visible = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::Garden_Group.Properties.Resources.garden_team_logo_1200x630;
+            this.pictureBox5.Location = new System.Drawing.Point(37, 23);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(261, 65);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 43;
+            this.pictureBox5.TabStop = false;
+            // 
+            // textBoxForgotEmail
+            // 
+            this.textBoxForgotEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxForgotEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxForgotEmail.ForeColor = System.Drawing.Color.Green;
+            this.textBoxForgotEmail.Location = new System.Drawing.Point(73, 192);
+            this.textBoxForgotEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxForgotEmail.Multiline = true;
+            this.textBoxForgotEmail.Name = "textBoxForgotEmail";
+            this.textBoxForgotEmail.Size = new System.Drawing.Size(205, 25);
+            this.textBoxForgotEmail.TabIndex = 40;
+            // 
+            // textBoxForgotUsername
+            // 
+            this.textBoxForgotUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxForgotUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxForgotUsername.ForeColor = System.Drawing.Color.Green;
+            this.textBoxForgotUsername.Location = new System.Drawing.Point(73, 123);
+            this.textBoxForgotUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxForgotUsername.Multiline = true;
+            this.textBoxForgotUsername.Name = "textBoxForgotUsername";
+            this.textBoxForgotUsername.Size = new System.Drawing.Size(205, 25);
+            this.textBoxForgotUsername.TabIndex = 41;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Green;
+            this.label5.Location = new System.Drawing.Point(136, 332);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 20);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Exit";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(180, 254);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(94, 17);
+            this.label6.TabIndex = 39;
+            this.label6.Text = "Clear Fields";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // buttonGetNewPassword
+            // 
+            this.buttonGetNewPassword.BackColor = System.Drawing.Color.Green;
+            this.buttonGetNewPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonGetNewPassword.FlatAppearance.BorderSize = 0;
+            this.buttonGetNewPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGetNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGetNewPassword.ForeColor = System.Drawing.Color.White;
+            this.buttonGetNewPassword.Location = new System.Drawing.Point(38, 286);
+            this.buttonGetNewPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonGetNewPassword.Name = "buttonGetNewPassword";
+            this.buttonGetNewPassword.Size = new System.Drawing.Size(241, 33);
+            this.buttonGetNewPassword.TabIndex = 37;
+            this.buttonGetNewPassword.Text = "Get New Password";
+            this.buttonGetNewPassword.UseVisualStyleBackColor = false;
+            this.buttonGetNewPassword.Click += new System.EventHandler(this.buttonGetNewPassword_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Green;
+            this.panel5.Location = new System.Drawing.Point(43, 224);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(236, 1);
+            this.panel5.TabIndex = 35;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::Garden_Group.Properties.Resources._285440;
+            this.pictureBox6.Location = new System.Drawing.Point(43, 192);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 33;
+            this.pictureBox6.TabStop = false;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Green;
+            this.panel6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.panel6.Location = new System.Drawing.Point(43, 154);
+            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(236, 1);
+            this.panel6.TabIndex = 36;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::Garden_Group.Properties.Resources.download__4_;
+            this.pictureBox7.Location = new System.Drawing.Point(43, 123);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 34;
+            this.pictureBox7.TabStop = false;
             // 
             // Login
             // 
@@ -253,21 +421,27 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImage = global::Garden_Group.Properties.Resources.istockphoto_123366044_170667a1;
-            this.ClientSize = new System.Drawing.Size(510, 659);
+            this.ClientSize = new System.Drawing.Size(509, 659);
+            this.Controls.Add(this.panelForgotPassword);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelLogin.ResumeLayout(false);
+            this.panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panelForgotPassword.ResumeLayout(false);
+            this.panelForgotPassword.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -275,7 +449,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelLogin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBoxPassword;
         private System.Windows.Forms.TextBox txtBoxUserName;
@@ -289,7 +463,19 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelDisplayError;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelForgotPassword;
+        private System.Windows.Forms.Label labelDisplayForgotPasswordErrors;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.TextBox textBoxForgotEmail;
+        private System.Windows.Forms.TextBox textBoxForgotUsername;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buttonGetNewPassword;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label7;
     }
 }
 

@@ -63,6 +63,16 @@ namespace Garden_Group.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _285440 {
+            get {
+                object obj = ResourceManager.GetObject("285440", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _495_4950519_unlock_alt_icons_download_for_free_in_png {
             get {
                 object obj = ResourceManager.GetObject("495-4950519_unlock-alt-icons-download-for-free-in-png", resourceCulture);

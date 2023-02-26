@@ -18,7 +18,7 @@ namespace Garden_Group
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
-            //Application.Run(new ServiceDesk(new User("ignacio", "ignacio", "000", 6, Job.ServiceDeskEmployee)));
+            //Application.Run(new ServiceDesk(new User("ignacio", "ignacio", "eusebio", "ignacio.deeusebio.cobo@gmail.com", Location.Amsterdam, "whatever", "000", 6, Job.ServiceDeskEmployee)));
         }
     }
 }

@@ -17,6 +17,10 @@ namespace GardenService
         {
             return userDao.GetUsers();
         }
+        public void UpdatePassword(User user, string password)
+        {
+            userDao.UpdatePassword(user, password);
+        }
 
         public User ValidateLogin(String username, String password)
         {

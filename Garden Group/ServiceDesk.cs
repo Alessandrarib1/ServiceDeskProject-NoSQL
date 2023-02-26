@@ -42,7 +42,7 @@ namespace Garden_Group
 
         //general method for ease of panel switching
         private void ShowPanel(Panel panel) //i tried making a function that would fit all three, but since each panel displays different things i couldnt do it as general as i wanted
-
+            //idec
         {
 
             if (panel == pnlDashboard)
@@ -129,7 +129,43 @@ namespace Garden_Group
             */
         }
 
-        //REPORT MANAGEMENT PANEL
+        //DASHBOARD PANEL (IDEC)
+        //since teacher said we could do the simplest thing here, so I did. Only total ticket display and urgent tickets are shown.
+
+        private void toolStripDashboard_Click(object sender, EventArgs e)
+        {
+            ShowPanel(pnlDashboard);
+            ShowChartData();
+        }
+        
+        private void ShowChartData()
+        {
+            int openTickets = 0;
+            int closedTickets = 0;
+            int unresolvedTickets = 0;
+
+            tickets = ticketService.GetAllTickets();
+            foreach (Ticket t in tickets)
+            {
+                if (t.ticketStatus == Status.Open)
+                    openTickets++;
+                else if (t.ticketStatus == Status.Closed)
+                    closedTickets++;
+                else if (t.ticketStatus == Status.Unresolved)
+                    unresolvedTickets++;
+            }
+            chartDashboard.Series["s1"].Points.Clear();
+            chartDashboard.Titles.Clear();
+            chartDashboard.Titles.Add("Ticket overview");
+            chartDashboard.Series["s1"].IsValueShownAsLabel = true;
+            chartDashboard.Series["s1"].Points.AddXY("open", openTickets);
+            chartDashboard.Series["s1"].Points.AddXY("closed", closedTickets);
+            chartDashboard.Series["s1"].Points.AddXY("unresolved", unresolvedTickets);
+        }
+
+
+
+        //REPORT MANAGEMENT PANEL (IDEC)
 
         private void toolStripReportManagement_Click(object sender, EventArgs e)
         {
@@ -192,7 +228,7 @@ namespace Garden_Group
         }
 
 
-        //TICKET INCIDENT PANEL
+        //TICKET INCIDENT PANEL (IDEC)
 
         private void toolStripIncidentManagement_Click(object sender, EventArgs e)
         {
@@ -311,7 +347,7 @@ namespace Garden_Group
         }
 
 
-        //USER MANAGEMENT PANEL
+        //USER MANAGEMENT PANEL (IDEC)
 
         private void toolStripUserManagement_Click(object sender, EventArgs e)
         {
@@ -459,7 +495,7 @@ namespace Garden_Group
             }
         }
 
-        //USER CREATION PANEL
+        //USER CREATION PANEL (IDEC & ALE)
 
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
@@ -471,7 +507,7 @@ namespace Garden_Group
 
         }*/
 
-        private void listViewUsers_DoubleClick(object sender, EventArgs e)
+        private void listViewUsers_DoubleClick(object sender, EventArgs e) //could be moved a bit further up if need be
         {
             if (listViewUsers.SelectedItems.Count == 1)
             {
@@ -521,12 +557,13 @@ namespace Garden_Group
             {
                 string password = "";
                 int newUserId = users[users.Count -1].GetEmployeeId() +1;
-                if (radioButtonCreateMyOwnPassword.Checked && textBoxPassword.Text != string.Empty && textBoxPassword.Text.Equals(textBoxConfirmPassword))
+                if (radioButtonCreateMyOwnPassword.Checked && textBoxPassword.Text != string.Empty && textBoxPassword.Text.Equals(textBoxConfirmPassword.Text))
                 {
                     password = textBoxPassword.Text;
                 }
                 else if (radioButtonGeneratePassword.Checked)
                 { password = HashPassword.RandomPasswordGenrator(); }
+                else { return; }
                 Dictionary<string, string> hashAndSaltPassword = HashPassword.GenerateSaltedHash(password);
                 EmailGenerator.SendLoginDetails(txtName.Text, TextBoxEmail.Text, txtUsername.Text, password);
                 Location location = (Location)comboBoxLocation.SelectedItem;
@@ -564,17 +601,20 @@ namespace Garden_Group
                 MessageBox.Show("No ticket to delete");
         }
 
-        private void radioButtonCreateMyOwnPassword_CheckedChanged(object sender, EventArgs e)
+    
+
+
+        private void radioButtonCreateMyOwnPassword_CheckedChanged_1(object sender, EventArgs e)
         {
-            textBoxPassword.Enabled = true;
             textBoxConfirmPassword.Enabled = true;
+            textBoxPassword.Enabled = true;
         }
 
-        private void radioButtonGeneratePassword_CheckedChanged(object sender, EventArgs e)
+        private void radioButtonGeneratePassword_CheckedChanged_1(object sender, EventArgs e)
         {
-            textBoxPassword.Enabled = false;
             textBoxConfirmPassword.Enabled = false;
-
+            textBoxPassword.Enabled = false;
         }
+
     }
 }

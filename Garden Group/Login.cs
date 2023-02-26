@@ -24,6 +24,7 @@ namespace Garden_Group
         public Login()
         {
             InitializeComponent();
+            panelForgotPassword.Hide();
 
         }
 
@@ -55,7 +56,6 @@ namespace Garden_Group
                 }
                 else if (user.GetJob() == Job.ServiceDeskEmployee)
                 {
-                    label1.Text = "well done regular employeee";
                     ServiceDesk serviceDesk = new ServiceDesk(user);
                     serviceDesk.Show();
                     this.Hide();
@@ -79,6 +79,67 @@ namespace Garden_Group
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void LabelClearFields_Click(object sender, EventArgs e)
+        {
+            txtBoxPassword.Clear();
+            txtBoxUserName.Clear();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            textBoxForgotEmail.Clear();
+            textBoxForgotUsername.Clear();
+
+            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            panelLogin.Hide();
+            panelForgotPassword.Show();
+            labelDisplayForgotPasswordErrors.Text = String.Empty;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonGetNewPassword_Click(object sender, EventArgs e)
+        {
+            if(textBoxForgotUsername.Text != String.Empty && textBoxForgotEmail.Text != String.Empty)
+            {
+                try
+                {
+                    UserService userService = new UserService();
+                    List<User> users = userService.GetUsers();
+                    User selectedUser = null;
+                    foreach(User user in users)
+                    {
+                        if(user.GetEmail() == textBoxForgotEmail.Text && user.GetUsername() == textBoxForgotUsername.Text)
+                        {
+                            selectedUser = user;
+                            break;
+                        }
+                    }
+                    if(selectedUser == null)
+                    {
+                        labelDisplayForgotPasswordErrors.Visible = true;
+                        labelDisplayForgotPasswordErrors.Text = "username or email does not exist in the system";
+                        return;
+                    }
+                    string password = HashPassword.RandomPasswordGenrator();
+                    userService.UpdatePassword(selectedUser, password);
+                    EmailGenerator.SendLoginDetails(selectedUser.GetFirstName(), selectedUser.GetEmail(), selectedUser.GetUsername(), password);
+                    MessageBox.Show("New password was sent to your email");
+                    textBoxForgotEmail.Clear();
+                    textBoxForgotUsername.Clear();
+
+                }
+                catch { }
+            }
         }
     }
 }

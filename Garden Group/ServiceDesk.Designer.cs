@@ -29,6 +29,9 @@ namespace Garden_Group
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripDashboard = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripReportManagement = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,31 +73,44 @@ namespace Garden_Group
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlUserCreation = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.btnUserDelete = new System.Windows.Forms.Button();
-            this.btnUserUpdate = new System.Windows.Forms.Button();
-            this.btnUserCreate = new System.Windows.Forms.Button();
-            this.comboBoxJob = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.pnlReportManagement = new System.Windows.Forms.Panel();
             this.btnDeleteReport = new System.Windows.Forms.Button();
             this.listViewReports = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pnlUserCreation = new System.Windows.Forms.Panel();
+            this.radioButtonCreateMyOwnPassword = new System.Windows.Forms.RadioButton();
+            this.radioButtonGeneratePassword = new System.Windows.Forms.RadioButton();
+            this.textBoxConfirmPassword = new System.Windows.Forms.TextBox();
+            this.confPasswordLabel = new System.Windows.Forms.Label();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBoxLocation = new System.Windows.Forms.ComboBox();
+            this.Location = new System.Windows.Forms.Label();
+            this.TextBoxEmail = new System.Windows.Forms.TextBox();
+            this.Email = new System.Windows.Forms.Label();
+            this.TextBoxLastName = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.btnUserDelete = new System.Windows.Forms.Button();
+            this.btnUserUpdate = new System.Windows.Forms.Button();
+            this.btnUserCreate = new System.Windows.Forms.Button();
+            this.comboBoxJob = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.chartDashboard = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1.SuspendLayout();
+            this.pnlDashboard.SuspendLayout();
             this.pnlUserManagement.SuspendLayout();
             this.pnlIncidentManagement.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.pnlTicketCreation.SuspendLayout();
-            this.pnlUserCreation.SuspendLayout();
             this.pnlReportManagement.SuspendLayout();
+            this.pnlUserCreation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDashboard)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -108,43 +124,45 @@ namespace Garden_Group
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // toolStripDashboard
             // 
             this.toolStripDashboard.Name = "toolStripDashboard";
-            this.toolStripDashboard.Size = new System.Drawing.Size(96, 24);
+            this.toolStripDashboard.Size = new System.Drawing.Size(96, 26);
             this.toolStripDashboard.Text = "Dashboard";
+            this.toolStripDashboard.Click += new System.EventHandler(this.toolStripDashboard_Click);
             // 
             // toolStripReportManagement
             // 
             this.toolStripReportManagement.Name = "toolStripReportManagement";
-            this.toolStripReportManagement.Size = new System.Drawing.Size(160, 24);
+            this.toolStripReportManagement.Size = new System.Drawing.Size(160, 26);
             this.toolStripReportManagement.Text = "Report Management";
             this.toolStripReportManagement.Click += new System.EventHandler(this.toolStripReportManagement_Click);
             // 
             // toolStripIncidentManagement
             // 
             this.toolStripIncidentManagement.Name = "toolStripIncidentManagement";
-            this.toolStripIncidentManagement.Size = new System.Drawing.Size(168, 24);
+            this.toolStripIncidentManagement.Size = new System.Drawing.Size(168, 26);
             this.toolStripIncidentManagement.Text = "Incident Management";
             this.toolStripIncidentManagement.Click += new System.EventHandler(this.toolStripIncidentManagement_Click);
             // 
             // toolStripUserManagement
             // 
             this.toolStripUserManagement.Name = "toolStripUserManagement";
-            this.toolStripUserManagement.Size = new System.Drawing.Size(144, 24);
+            this.toolStripUserManagement.Size = new System.Drawing.Size(144, 26);
             this.toolStripUserManagement.Text = "User Management";
             this.toolStripUserManagement.Click += new System.EventHandler(this.toolStripUserManagement_Click);
             // 
             // pnlDashboard
             // 
-            this.pnlDashboard.Location = new System.Drawing.Point(793, 32);
+            this.pnlDashboard.Controls.Add(this.chartDashboard);
+            this.pnlDashboard.Location = new System.Drawing.Point(12, 30);
             this.pnlDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.Size = new System.Drawing.Size(101, 46);
+            this.pnlDashboard.Size = new System.Drawing.Size(776, 409);
             this.pnlDashboard.TabIndex = 1;
             // 
             // pnlUserManagement
@@ -268,35 +286,35 @@ namespace Garden_Group
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(66, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(66, 30);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
             // toolStripOpen
             // 
             this.toolStripOpen.Name = "toolStripOpen";
-            this.toolStripOpen.Size = new System.Drawing.Size(59, 24);
+            this.toolStripOpen.Size = new System.Drawing.Size(59, 26);
             this.toolStripOpen.Text = "Open";
             this.toolStripOpen.Click += new System.EventHandler(this.toolStripOpen_Click);
             // 
             // toolStripClosed
             // 
             this.toolStripClosed.Name = "toolStripClosed";
-            this.toolStripClosed.Size = new System.Drawing.Size(68, 24);
+            this.toolStripClosed.Size = new System.Drawing.Size(68, 26);
             this.toolStripClosed.Text = "Closed";
             this.toolStripClosed.Click += new System.EventHandler(this.toolStripClosed_Click);
             // 
             // toolStripUnresolved
             // 
             this.toolStripUnresolved.Name = "toolStripUnresolved";
-            this.toolStripUnresolved.Size = new System.Drawing.Size(97, 24);
+            this.toolStripUnresolved.Size = new System.Drawing.Size(97, 26);
             this.toolStripUnresolved.Text = "Unresolved";
             this.toolStripUnresolved.Click += new System.EventHandler(this.toolStripUnresolved_Click);
             // 
             // toolStripAllTickets
             // 
             this.toolStripAllTickets.Name = "toolStripAllTickets";
-            this.toolStripAllTickets.Size = new System.Drawing.Size(41, 24);
+            this.toolStripAllTickets.Size = new System.Drawing.Size(41, 26);
             this.toolStripAllTickets.Text = "All";
             this.toolStripAllTickets.Click += new System.EventHandler(this.toolStripAllTickets_Click);
             // 
@@ -481,126 +499,6 @@ namespace Garden_Group
             this.label1.TabIndex = 0;
             this.label1.Text = "Category";
             // 
-            // pnlUserCreation
-            // 
-            this.pnlUserCreation.Controls.Add(this.label5);
-            this.pnlUserCreation.Controls.Add(this.txtName);
-            this.pnlUserCreation.Controls.Add(this.txtPassword);
-            this.pnlUserCreation.Controls.Add(this.txtUsername);
-            this.pnlUserCreation.Controls.Add(this.btnUserDelete);
-            this.pnlUserCreation.Controls.Add(this.btnUserUpdate);
-            this.pnlUserCreation.Controls.Add(this.btnUserCreate);
-            this.pnlUserCreation.Controls.Add(this.comboBoxJob);
-            this.pnlUserCreation.Controls.Add(this.label6);
-            this.pnlUserCreation.Controls.Add(this.label7);
-            this.pnlUserCreation.Controls.Add(this.label8);
-            this.pnlUserCreation.Location = new System.Drawing.Point(12, 32);
-            this.pnlUserCreation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlUserCreation.Name = "pnlUserCreation";
-            this.pnlUserCreation.Size = new System.Drawing.Size(775, 396);
-            this.pnlUserCreation.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(65, 88);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 17);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Name";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(171, 85);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(233, 22);
-            this.txtName.TabIndex = 13;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(171, 197);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(233, 22);
-            this.txtPassword.TabIndex = 12;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(171, 36);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(233, 22);
-            this.txtUsername.TabIndex = 11;
-            // 
-            // btnUserDelete
-            // 
-            this.btnUserDelete.Location = new System.Drawing.Point(313, 277);
-            this.btnUserDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnUserDelete.Name = "btnUserDelete";
-            this.btnUserDelete.Size = new System.Drawing.Size(91, 38);
-            this.btnUserDelete.TabIndex = 10;
-            this.btnUserDelete.Text = "Delete";
-            this.btnUserDelete.UseVisualStyleBackColor = true;
-            this.btnUserDelete.Click += new System.EventHandler(this.btnUserDelete_Click);
-            // 
-            // btnUserUpdate
-            // 
-            this.btnUserUpdate.Location = new System.Drawing.Point(184, 277);
-            this.btnUserUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnUserUpdate.Name = "btnUserUpdate";
-            this.btnUserUpdate.Size = new System.Drawing.Size(91, 38);
-            this.btnUserUpdate.TabIndex = 9;
-            this.btnUserUpdate.Text = "Update";
-            this.btnUserUpdate.UseVisualStyleBackColor = true;
-            // 
-            // btnUserCreate
-            // 
-            this.btnUserCreate.Location = new System.Drawing.Point(53, 277);
-            this.btnUserCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnUserCreate.Name = "btnUserCreate";
-            this.btnUserCreate.Size = new System.Drawing.Size(91, 38);
-            this.btnUserCreate.TabIndex = 8;
-            this.btnUserCreate.Text = "Create";
-            this.btnUserCreate.UseVisualStyleBackColor = true;
-            this.btnUserCreate.Click += new System.EventHandler(this.btnUserCreate_Click);
-            // 
-            // comboBoxJob
-            // 
-            this.comboBoxJob.FormattingEnabled = true;
-            this.comboBoxJob.Items.AddRange(new object[] {
-            "Regular Employee",
-            "Service Desk Employee"});
-            this.comboBoxJob.Location = new System.Drawing.Point(171, 141);
-            this.comboBoxJob.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBoxJob.Name = "comboBoxJob";
-            this.comboBoxJob.Size = new System.Drawing.Size(233, 24);
-            this.comboBoxJob.TabIndex = 5;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(69, 200);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 17);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Password";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 144);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(127, 17);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "What kind of user?";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(65, 39);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 17);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Username";
-            // 
             // pnlReportManagement
             // 
             this.pnlReportManagement.Controls.Add(this.btnDeleteReport);
@@ -653,13 +551,252 @@ namespace Garden_Group
             this.columnHeader3.Text = "First name";
             this.columnHeader3.Width = 222;
             // 
+            // pnlUserCreation
+            // 
+            this.pnlUserCreation.Controls.Add(this.radioButtonCreateMyOwnPassword);
+            this.pnlUserCreation.Controls.Add(this.radioButtonGeneratePassword);
+            this.pnlUserCreation.Controls.Add(this.textBoxConfirmPassword);
+            this.pnlUserCreation.Controls.Add(this.confPasswordLabel);
+            this.pnlUserCreation.Controls.Add(this.textBoxPassword);
+            this.pnlUserCreation.Controls.Add(this.label10);
+            this.pnlUserCreation.Controls.Add(this.comboBoxLocation);
+            this.pnlUserCreation.Controls.Add(this.Location);
+            this.pnlUserCreation.Controls.Add(this.TextBoxEmail);
+            this.pnlUserCreation.Controls.Add(this.Email);
+            this.pnlUserCreation.Controls.Add(this.TextBoxLastName);
+            this.pnlUserCreation.Controls.Add(this.label6);
+            this.pnlUserCreation.Controls.Add(this.label5);
+            this.pnlUserCreation.Controls.Add(this.txtName);
+            this.pnlUserCreation.Controls.Add(this.txtUsername);
+            this.pnlUserCreation.Controls.Add(this.btnUserDelete);
+            this.pnlUserCreation.Controls.Add(this.btnUserUpdate);
+            this.pnlUserCreation.Controls.Add(this.btnUserCreate);
+            this.pnlUserCreation.Controls.Add(this.comboBoxJob);
+            this.pnlUserCreation.Controls.Add(this.label7);
+            this.pnlUserCreation.Controls.Add(this.label8);
+            this.pnlUserCreation.Location = new System.Drawing.Point(793, 300);
+            this.pnlUserCreation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlUserCreation.Name = "pnlUserCreation";
+            this.pnlUserCreation.Size = new System.Drawing.Size(53, 40);
+            this.pnlUserCreation.TabIndex = 12;
+            // 
+            // radioButtonCreateMyOwnPassword
+            // 
+            this.radioButtonCreateMyOwnPassword.AutoSize = true;
+            this.radioButtonCreateMyOwnPassword.Location = new System.Drawing.Point(54, 301);
+            this.radioButtonCreateMyOwnPassword.Name = "radioButtonCreateMyOwnPassword";
+            this.radioButtonCreateMyOwnPassword.Size = new System.Drawing.Size(196, 21);
+            this.radioButtonCreateMyOwnPassword.TabIndex = 30;
+            this.radioButtonCreateMyOwnPassword.TabStop = true;
+            this.radioButtonCreateMyOwnPassword.Text = "Create your own password";
+            this.radioButtonCreateMyOwnPassword.UseVisualStyleBackColor = true;
+            this.radioButtonCreateMyOwnPassword.CheckedChanged += new System.EventHandler(this.radioButtonCreateMyOwnPassword_CheckedChanged_1);
+            // 
+            // radioButtonGeneratePassword
+            // 
+            this.radioButtonGeneratePassword.AutoSize = true;
+            this.radioButtonGeneratePassword.Location = new System.Drawing.Point(200, 261);
+            this.radioButtonGeneratePassword.Name = "radioButtonGeneratePassword";
+            this.radioButtonGeneratePassword.Size = new System.Drawing.Size(293, 21);
+            this.radioButtonGeneratePassword.TabIndex = 29;
+            this.radioButtonGeneratePassword.TabStop = true;
+            this.radioButtonGeneratePassword.Text = "yes, a password will be send to your email";
+            this.radioButtonGeneratePassword.UseVisualStyleBackColor = true;
+            this.radioButtonGeneratePassword.CheckedChanged += new System.EventHandler(this.radioButtonGeneratePassword_CheckedChanged_1);
+            // 
+            // textBoxConfirmPassword
+            // 
+            this.textBoxConfirmPassword.Enabled = false;
+            this.textBoxConfirmPassword.Location = new System.Drawing.Point(577, 305);
+            this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
+            this.textBoxConfirmPassword.PasswordChar = '*';
+            this.textBoxConfirmPassword.Size = new System.Drawing.Size(184, 22);
+            this.textBoxConfirmPassword.TabIndex = 28;
+            // 
+            // confPasswordLabel
+            // 
+            this.confPasswordLabel.AutoSize = true;
+            this.confPasswordLabel.Location = new System.Drawing.Point(450, 305);
+            this.confPasswordLabel.Name = "confPasswordLabel";
+            this.confPasswordLabel.Size = new System.Drawing.Size(121, 17);
+            this.confPasswordLabel.TabIndex = 27;
+            this.confPasswordLabel.Text = "Confirm Password";
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Enabled = false;
+            this.textBoxPassword.Location = new System.Drawing.Point(258, 300);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(186, 22);
+            this.textBoxPassword.TabIndex = 26;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(51, 263);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(140, 17);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Generate password?";
+            // 
+            // comboBoxLocation
+            // 
+            this.comboBoxLocation.FormattingEnabled = true;
+            this.comboBoxLocation.Location = new System.Drawing.Point(200, 177);
+            this.comboBoxLocation.Name = "comboBoxLocation";
+            this.comboBoxLocation.Size = new System.Drawing.Size(257, 24);
+            this.comboBoxLocation.TabIndex = 22;
+            // 
+            // Location
+            // 
+            this.Location.AutoSize = true;
+            this.Location.Location = new System.Drawing.Point(51, 177);
+            this.Location.Name = "Location";
+            this.Location.Size = new System.Drawing.Size(62, 17);
+            this.Location.TabIndex = 21;
+            this.Location.Text = "Location";
+            // 
+            // TextBoxEmail
+            // 
+            this.TextBoxEmail.Location = new System.Drawing.Point(200, 100);
+            this.TextBoxEmail.Name = "TextBoxEmail";
+            this.TextBoxEmail.Size = new System.Drawing.Size(257, 22);
+            this.TextBoxEmail.TabIndex = 18;
+            // 
+            // Email
+            // 
+            this.Email.AutoSize = true;
+            this.Email.Location = new System.Drawing.Point(52, 105);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(42, 17);
+            this.Email.TabIndex = 17;
+            this.Email.Text = "Email";
+            // 
+            // TextBoxLastName
+            // 
+            this.TextBoxLastName.Location = new System.Drawing.Point(200, 66);
+            this.TextBoxLastName.Name = "TextBoxLastName";
+            this.TextBoxLastName.Size = new System.Drawing.Size(257, 22);
+            this.TextBoxLastName.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(51, 71);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 17);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Last Name";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(51, 31);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 17);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "First Name";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(200, 26);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(257, 22);
+            this.txtName.TabIndex = 13;
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(200, 220);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(257, 22);
+            this.txtUsername.TabIndex = 11;
+            // 
+            // btnUserDelete
+            // 
+            this.btnUserDelete.Location = new System.Drawing.Point(313, 359);
+            this.btnUserDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUserDelete.Name = "btnUserDelete";
+            this.btnUserDelete.Size = new System.Drawing.Size(91, 38);
+            this.btnUserDelete.TabIndex = 10;
+            this.btnUserDelete.Text = "Delete";
+            this.btnUserDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnUserUpdate
+            // 
+            this.btnUserUpdate.Location = new System.Drawing.Point(187, 361);
+            this.btnUserUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUserUpdate.Name = "btnUserUpdate";
+            this.btnUserUpdate.Size = new System.Drawing.Size(91, 38);
+            this.btnUserUpdate.TabIndex = 9;
+            this.btnUserUpdate.Text = "Update";
+            this.btnUserUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnUserCreate
+            // 
+            this.btnUserCreate.Location = new System.Drawing.Point(54, 359);
+            this.btnUserCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUserCreate.Name = "btnUserCreate";
+            this.btnUserCreate.Size = new System.Drawing.Size(91, 38);
+            this.btnUserCreate.TabIndex = 8;
+            this.btnUserCreate.Text = "Create";
+            this.btnUserCreate.UseVisualStyleBackColor = true;
+            this.btnUserCreate.Click += new System.EventHandler(this.btnUserCreate_Click);
+            // 
+            // comboBoxJob
+            // 
+            this.comboBoxJob.FormattingEnabled = true;
+            this.comboBoxJob.Items.AddRange(new object[] {
+            "Regular Employee",
+            "Service Desk Employee"});
+            this.comboBoxJob.Location = new System.Drawing.Point(200, 139);
+            this.comboBoxJob.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxJob.Name = "comboBoxJob";
+            this.comboBoxJob.Size = new System.Drawing.Size(257, 24);
+            this.comboBoxJob.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(52, 139);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(127, 17);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "What kind of user?";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(51, 223);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 17);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Username";
+            // 
+            // chartDashboard
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartDashboard.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartDashboard.Legends.Add(legend1);
+            this.chartDashboard.Location = new System.Drawing.Point(3, 3);
+            this.chartDashboard.Name = "chartDashboard";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "s1";
+            this.chartDashboard.Series.Add(series1);
+            this.chartDashboard.Size = new System.Drawing.Size(477, 403);
+            this.chartDashboard.TabIndex = 0;
+            this.chartDashboard.Text = "chart1";
+            // 
             // ServiceDesk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pnlReportManagement);
             this.Controls.Add(this.pnlUserCreation);
+            this.Controls.Add(this.pnlReportManagement);
             this.Controls.Add(this.pnlIncidentManagement);
             this.Controls.Add(this.pnlTicketCreation);
             this.Controls.Add(this.pnlUserManagement);
@@ -671,6 +808,7 @@ namespace Garden_Group
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnlDashboard.ResumeLayout(false);
             this.pnlUserManagement.ResumeLayout(false);
             this.pnlIncidentManagement.ResumeLayout(false);
             this.pnlIncidentManagement.PerformLayout();
@@ -678,9 +816,10 @@ namespace Garden_Group
             this.menuStrip2.PerformLayout();
             this.pnlTicketCreation.ResumeLayout(false);
             this.pnlTicketCreation.PerformLayout();
+            this.pnlReportManagement.ResumeLayout(false);
             this.pnlUserCreation.ResumeLayout(false);
             this.pnlUserCreation.PerformLayout();
-            this.pnlReportManagement.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartDashboard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -727,18 +866,6 @@ namespace Garden_Group
         private System.Windows.Forms.ColumnHeader userJob;
         private System.Windows.Forms.ColumnHeader ticketsOpen;
         private System.Windows.Forms.Button btnCreateUser;
-        private System.Windows.Forms.Panel pnlUserCreation;
-        private System.Windows.Forms.Button btnUserDelete;
-        private System.Windows.Forms.Button btnUserUpdate;
-        private System.Windows.Forms.Button btnUserCreate;
-        private System.Windows.Forms.ComboBox comboBoxJob;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripMenuItem toolStripReportManagement;
         private System.Windows.Forms.Panel pnlReportManagement;
         private System.Windows.Forms.ListView listViewReports;
@@ -747,5 +874,28 @@ namespace Garden_Group
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Button btnArchive;
         private System.Windows.Forms.Button btnDeleteReport;
+        private System.Windows.Forms.Panel pnlUserCreation;
+        private System.Windows.Forms.RadioButton radioButtonCreateMyOwnPassword;
+        private System.Windows.Forms.RadioButton radioButtonGeneratePassword;
+        private System.Windows.Forms.TextBox textBoxConfirmPassword;
+        private System.Windows.Forms.Label confPasswordLabel;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBoxLocation;
+        private System.Windows.Forms.Label Location;
+        private System.Windows.Forms.TextBox TextBoxEmail;
+        private System.Windows.Forms.Label Email;
+        private System.Windows.Forms.TextBox TextBoxLastName;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.Button btnUserDelete;
+        private System.Windows.Forms.Button btnUserUpdate;
+        private System.Windows.Forms.Button btnUserCreate;
+        private System.Windows.Forms.ComboBox comboBoxJob;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartDashboard;
     }
 }

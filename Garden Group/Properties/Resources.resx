@@ -127,14 +127,17 @@
   <data name="istockphoto-123366044-170667a1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\istockphoto-123366044-170667a1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="My project-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\My project-1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="essa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\essa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="istockphoto-1365654687-170667a" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\istockphoto-1365654687-170667a.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="black-square-close-x-button-icon-3163191536344jbn3p5wa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\black-square-close-x-button-icon-3163191536344jbn3p5wa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="essa1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\essa1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="leaf-background-vector" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\leaf-background-vector.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,13 +157,13 @@
   <data name="istockphoto-123366044-170667a" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\istockphoto-123366044-170667a.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="My project-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\My project-1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="black-square-close-x-button-icon-3163191536344jbn3p5wa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\black-square-close-x-button-icon-3163191536344jbn3p5wa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="download (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="essa1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\essa1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="285440" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\285440.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

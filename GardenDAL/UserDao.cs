@@ -22,6 +22,22 @@ namespace GardenDAL
             List<User> users = collectionOfUsers.AsQueryable().ToList<User>();
             return users;
         }
+
+        public void UpdatePassword(User user, string password)
+        {
+            try
+            {
+                var collection = db.GetCollection<BsonDocument>("employees");     
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", user.objectId);             
+                var update = Builders<BsonDocument>.Update.Set("password", password);
+                collection.UpdateOne(filter, update);
+            }
+            catch (MongoException)
+            {
+                throw new MongoException(" password was not updated");
+            }
+        }
+
         public User GetUserByObjectId(ObjectId objectId)
         {
             User user = collectionOfUsers.Find(x => x.objectId == objectId).FirstOrDefault();
